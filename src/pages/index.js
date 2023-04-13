@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import Select from 'react-select'
 import {useState} from 'react'
+import {InformationCircleIcon} from '@heroicons/react/24/outline'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -60,7 +61,7 @@ export default function Home() {
 
         {/* Insurance toggle  */}
         <label className="label cursor-pointer">
-          <span className="label-text">Has Insurance</span> 
+          <span className="label-text">Accepts Insurance</span> 
           <input type="checkbox" className="toggle" 
             checked={whetherInsurance} 
             onClick={() => setWhetherInsurance(!whetherInsurance)}/>
@@ -68,9 +69,9 @@ export default function Home() {
 
         {/* PracticeHub toggle */}
         <label className="label cursor-pointer">
-          <div className="tooltip tooltip-right" data-tip="hello">
-            <span className="label-text">PracticeHub</span>
-          </div>
+          <span className="label-text flex space-x-2 tooltip tooltip-right" data-tip="Our online pharmacy platform">
+            <p>Chewy PracticeHub</p> <InformationCircleIcon className="h-4" />
+          </span>
           <input type="checkbox" className="toggle" 
             checked={whetherPracticeHub} 
             onClick={() => setWhetherPracticeHub(!whetherPracticeHub)}/>
@@ -78,7 +79,9 @@ export default function Home() {
 
         {/* Televet toggle  */}
         <label className="label cursor-pointer">
-          <span className="label-text">Offers Televet</span> 
+          <span className="label-text">
+            Televet Services
+          </span> 
           <input type="checkbox" className="toggle" 
             checked={whetherTelevet} 
             onClick={() => setWhetherTelevet(!whetherTelevet)}/>
@@ -90,7 +93,7 @@ export default function Home() {
           <Select isMulti options={options} />
         </label>
 
-        <button className={`btn ${zipValidation ? "btn-disabled" : ""}`}>Search</button>
+        <button className={`btn ${zipValidation ? "btn-disabled" : ""} w-fit self-end`}>Search</button>
       </div>
     </div>
   )
