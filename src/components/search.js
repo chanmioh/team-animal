@@ -6,7 +6,6 @@ import { InformationCircleIcon } from "@heroicons/react/24/outline";
 export function Search(props) {
   // Field values
   var categories = [];
-  const [categories, setCategories] = useState([]);
   const [whetherInsurance, setWhetherInsurance] = useState(false);
   const [whetherPracticeHub, setWhetherPracticeHub] = useState(false);
   const [whetherTelevet, setWhetherTelevet] = useState(false);
