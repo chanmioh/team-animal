@@ -2,10 +2,10 @@ import Image from "next/image";
 import Select from "react-select";
 import { useState } from "react";
 import { Search } from "../components/search.js";
-import { Clinic } from "../components/clinic.js";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import Map from "./Map.js";
 import { getClinics } from "../utils/get-clinics.js";
+import Results from "./Results.js";
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState("search");
@@ -49,12 +49,12 @@ export default function Home() {
               console.log("Search triggered");
               console.dir(searchParams);
               searchCriteria = searchParams;
-              setClinics();
+              setClinics(getClinics(searchCriteria));
               setCurrentPage("result");
             }}
           />
         )}
-        {currentPage == "result" && <Clinic />}
+        {currentPage == "result" && <Results clinics={clinics} />}
       </div>
     </div>
   );
