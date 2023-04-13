@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <Map clinics={clinics} />
-      <div className="absolute top-0 left-0 h-screen p-6 w-80 p-6max-w-[40vw] bg-white flex flex-col drop-shadow-xl">
+      <div className="absolute top-0 left-0 h-screen p-6 w-80 p-6max-w-[40vw] bg-white flex flex-col drop-shadow-xl overflow-scroll">
         {/* Back Button */}
         <button>
           <ArrowLeftIcon
