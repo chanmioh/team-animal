@@ -1,17 +1,17 @@
-import Image from "next/image";
 import Select from "react-select";
 import { useState } from "react";
 import { InformationCircleIcon } from "@heroicons/react/24/outline";
 
 export function Search(props) {
   // Field values
-  var categories = [];
+  let categories = [];
+  const [zipCode, setZipCode] = useState("");
   const [whetherInsurance, setWhetherInsurance] = useState(false);
   const [whetherPracticeHub, setWhetherPracticeHub] = useState(false);
   const [whetherTelevet, setWhetherTelevet] = useState(false);
 
   // Field validation
-  const [zipValidation, setZipValidation] = useState();
+  const [zipValidation, setZipValidation] = useState(); // Can be "malformed" || "incomplete" || null
 
   const categoriesOptions = [
     { value: "Canine and Feline", label: "🐱🐶 Cat & Dog" },
@@ -64,7 +64,7 @@ export function Search(props) {
                     w-full`}
             onChange={(e) => {
               const newZip = e.target.value;
-              props.setZipCode(newZip);
+              setZipCode(newZip);
               if (newZip.length > 5 || !newZip.match(`^[0-9]*$`)) {
                 setZipValidation("malformed");
               } else if (newZip.length < 5 && newZip.length > 0) {
