@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <Map clinics={clinics} />
-      <div className="absolute top-0 left-0 h-screen min-w-fit max-w-[40vw] bg-white flex flex-col drop-shadow-xl">
+      <div className="absolute top-0 left-0 h-screen p-6 w-80 p-6max-w-[40vw] bg-white flex flex-col drop-shadow-xl">
         {/* Back Button */}
         <button>
           <ArrowLeftIcon
@@ -28,22 +28,22 @@ export default function Home() {
         </button>
 
         {/* Tabs */}
-        <div className="tabs self-center">
+        <div className="tabs self-center py-8">
           <a
             className={`tab tab-bordered ${
               currentPage === "search" && "tab-active"
             }`}
             onClick={() => setCurrentPage("search")}
           >
-            Search Criteria
+            Search
           </a>
           <a
             className={`tab tab-bordered ${
-              currentPage === "search" && clinics.length == 0 && "tab-disabled"
-            } tab-active`}
+              currentPage === "result" && "tab-active"
+            }`}
             onClick={() => setCurrentPage("result")}
           >
-            Clinics Found
+            Results
           </a>
         </div>
 
