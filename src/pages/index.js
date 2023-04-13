@@ -9,6 +9,8 @@ export default function Home() {
   const [currentPage, setCurrentPage] = useState("search"); // search or result
   const [clinics, setClinics] = useState();
 
+  var searchCriteria;
+
   return (
     <div className="min-h-screen max-w-[40vw] bg-white flex flex-col p-10 space-y-4 drop-shadow-xl">
 
@@ -23,6 +25,7 @@ export default function Home() {
         onSearch={(searchParams) => {
           console.log("Search triggered")
           console.dir(searchParams)
+          searchCriteria = searchParams
           setClinics();
           setCurrentPage("result");}} 
         />
