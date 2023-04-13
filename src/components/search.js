@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Select from "react-select";
 import { useState } from "react";
 import { InformationCircleIcon } from "@heroicons/react/24/outline";
@@ -5,13 +6,14 @@ import { InformationCircleIcon } from "@heroicons/react/24/outline";
 export function Search(props) {
   // Field values
   let categories = [];
-  const [zipCode, setZipCode] = useState("");
+  const [zipCode, setZipCode] = useState();
   const [whetherInsurance, setWhetherInsurance] = useState(false);
   const [whetherPracticeHub, setWhetherPracticeHub] = useState(false);
   const [whetherTelevet, setWhetherTelevet] = useState(false);
+  const [whetherEmergency, setWhetherEmergency] = useState(false);
 
   // Field validation
-  const [zipValidation, setZipValidation] = useState(); // Can be "malformed" || "incomplete" || null
+  const [zipValidation, setZipValidation] = useState();
 
   const categoriesOptions = [
     { value: "Canine and Feline", label: "🐱🐶 Cat & Dog" },
@@ -19,6 +21,7 @@ export function Search(props) {
     { value: "Reptile and Amphibian", label: "🐍🐟🐸 Reptiles & Amphibians" },
     { value: "Exotic", label: "🐯🐵 Exotic" },
     { value: "Equine", label: "🐴 Horse" },
+    { value: "Food Animal", label: "🍔 Food Animal" },
     { value: "Beef Cattle", label: "🐄 Beef Cattle" },
     { value: "Dairy", label: "🥛 Dairy Cattle" },
   ];
@@ -91,9 +94,9 @@ export function Search(props) {
         <label className="label cursor-pointer">
           <span
             className="label-text flex space-x-2 tooltip tooltip-right"
-            data-tip="Our online pharmacy platform"
+            data-tip="Our integrated online pharmacy platform!"
           >
-            <p>Chewy PracticeHub</p> <InformationCircleIcon className="h-4" />
+            <p>Chewy Practice Hub</p> <InformationCircleIcon className="h-4" />
           </span>
           <input
             type="checkbox"
@@ -107,15 +110,26 @@ export function Search(props) {
         <label className="label cursor-pointer">
           <span
             className="label-text flex space-x-2 tooltip tooltip-right"
-            data-tip="Messaging and calls"
+            data-tip="Connect with veterinarians about questions!"
           >
-            <p>Televet Services</p> <InformationCircleIcon className="h-4" />
+            <p>TeleVet Services</p> <InformationCircleIcon className="h-4" />
           </span>
           <input
             type="checkbox"
             className="toggle"
             checked={whetherTelevet}
             onClick={() => setWhetherTelevet(!whetherTelevet)}
+          />
+        </label>
+
+        {/* Emergency toggle  */}
+        <label className="label cursor-pointer">
+          <span className="label-text"> Emergency Services</span>
+          <input
+            type="checkbox"
+            className="toggle"
+            checked={whetherEmergency}
+            onClick={() => setWhetherEmergency(!whetherEmergency)}
           />
         </label>
 

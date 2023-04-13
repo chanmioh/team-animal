@@ -16,41 +16,32 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <Map clinics={clinics} />
-      <div
-        div
-        className="absolute h-screen top-0 left-0 max-w-[40vw] bg-white flex flex-col p-10 space-y-4 drop-shadow-xl"
-      >
-        <ArrowLeftIcon
-          className={`h-8 self-start ${currentPage == "search" && "invisible"}`}
+      <ArrowLeftIcon
+        className={`h-8 self-start ${currentPage == "search" && "invisible"}`}
+        onClick={() => setCurrentPage("search")}
+      />
+      <div className="tabs self-center">
+        <a
+          className="tab tab-bordered tab-active"
           onClick={() => setCurrentPage("search")}
-        />
-        <div className="tabs self-center">
-          <a
-            className="tab tab-bordered tab-active"
-            onClick={() => setCurrentPage("search")}
-          >
-            Search Criteria
-          </a>
-          <a className="tab tab-bordered tab-disabled">Clinics Found</a>
-        </div>
-
-        {currentPage == "search" && (
-          <Search
-            onSearch={(searchParams) => {
-              console.log("Search triggered");
-              console.dir(searchParams);
-              searchCriteria = searchParams;
-              setClinics(getClinics(searchParams));
-              setCurrentPage("result");
-            }}
-          >
-            <div className="tabs self-center">
-              <a className="tab tab-bordered tab-active">Search Criteria</a>
-              <a className="tab tab-bordered tab-disabled">Clinics Found</a>
-            </div>
-          </Search>
-        )}
+        >
+          Search Criteria
+        </a>
+        <a className="tab tab-bordered tab-disabled">Clinics Found</a>
       </div>
+
+      {currentPage == "search" && (
+        <Search
+          onSearch={(searchParams) => {
+            console.log("Search triggered");
+            console.dir(searchParams);
+            searchCriteria = searchParams;
+            setClinics();
+            setCurrentPage("result");
+          }}
+        />
+      )}
+      {currentPage == "result" && <Clinic />}
     </div>
   );
 }
