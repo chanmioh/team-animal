@@ -6,9 +6,16 @@ import {useState} from 'react'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  // Field values
+  const [categories, setCategories] = useState([])
+  const [zipCode, setZipCode] = useState()
   const [whetherInsurance, setWhetherInsurance] = useState(false)
   const [whetherPracticeHub, setWhetherPracticeHub] = useState(false)
   const [whetherTelevet, setWhetherTelevet] = useState(false)
+
+  // Field validation
+  const [zipValidation, setZipValidation] = useState()
+
   const options = [
     { value: 'Canine and Feline', label: '🐱🐶 Cat & Dog' },
     { value: 'Avian', label: '🦜 Bird' },
@@ -25,7 +32,7 @@ export default function Home() {
         {/* Animal selector */}
         <label>
           <span className="label-text">Animal Category</span> 
-          <Select isMulti options={options} />
+          <Select isMulti options={options} onChange={newValue => setCategories(newValue.map(value => value.value))} />
         </label>
 
         {/* Zip input */}
@@ -33,7 +40,22 @@ export default function Home() {
           <label className="label">
             <span className="label-text">Area Code</span>
           </label>
-          <input type="text" placeholder="e.g. 12345" className="input input-bordered w-full" />
+          <input type="text" placeholder="e.g. 12345" 
+            className={`input input-bordered 
+              ${zipValidation == "incomplete" && "input-warning"} 
+              ${zipValidation == "malformed" && "input-error"} 
+              w-full`} 
+            onChange={e => {
+              const newZip = e.target.value;
+              setZipCode(newZip);
+              if (newZip.length < 5 && newZip.length > 0) {
+                setZipValidation("incomplete")
+              } else if (newZip.length > 5) {
+                setZipValidation("malformed")
+              } else {
+                setZipValidation()
+              }
+            }} />
         </div>
 
         {/* Insurance toggle  */}
@@ -66,7 +88,7 @@ export default function Home() {
           <Select isMulti options={options} />
         </label>
 
-        <button className="btn">Search</button>
+        <button className={`btn ${zipValidation ? "btn-disabled" : ""}`}>Search</button>
       </div>
     </div>
   )
