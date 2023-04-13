@@ -39,7 +39,7 @@ export default function Home() {
        { value: 'Radiology', label: 'Radiology' }
   ]
   return (
-    <div className="min-h-screen max-w-[40vw] p-10 bg-white flex flex-col space-y-4">
+    <div className="min-h-screen max-w-[40vw] p-10 bg-white flex flex-col space-y-4 drop-shadow-xl">
       {/* Animal selector */}
       <label>
         <span className="label-text">Animal Category</span> 
