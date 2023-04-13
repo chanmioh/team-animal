@@ -21,18 +21,13 @@ export function getClinicsForCategories(categories) {
   return result;
 }
 
-function reducer(state, action, payload) {
+function reducer(state, action) {
   switch (action.type) {
     case "zipcodes": {
-      return getClinicsForZipcode(payload.zipcode).map((c, idx) => (
-        <Marker
-          key={idx}
-          position={{
-            lat: parseFloat(c.latitude),
-            lng: parseFloat(c.longitude),
-          }}
-        />
-      ));
+      return getClinicsForZipcode(action.zipcode);
+    }
+    case "categories": {
+      return getClinicsForCategories(action.categories);
     }
   }
 }
@@ -43,19 +38,45 @@ const Map = () => {
   });
 
   //   TODO: Change this to current location
-  const center = useMemo(() => ({ lat: 44, lng: -80 }), []);
+  const center = useMemo(() => ({ lat: 42.359532, lng: -71.057549 }), []);
   const [markers, dispatch] = useReducer(reducer, []);
 
   if (!isLoaded) return <>Loading...</>;
 
   return (
     <>
+      <button
+        class="w-full h-10 bg-white"
+        onClick={() => {
+          dispatch({
+            type: "zipcodes",
+            zipcode: "01033",
+          });
+        }}
+      >
+        Button
+      </button>
       <GoogleMap
         mapContainerClassName="w-full h-screen"
-        zoom={10}
-        center={center}
+        zoom={9}
+        center={
+          markers[0]
+            ? {
+                lat: parseFloat(markers[0].latitude),
+                lng: parseFloat(markers[0].longitude),
+              }
+            : center
+        }
       >
-        {markers}
+        {markers.map((m, idx) => (
+          <Marker
+            key={idx}
+            position={{
+              lat: parseFloat(m.latitude),
+              lng: parseFloat(m.longitude),
+            }}
+          />
+        ))}
       </GoogleMap>
     </>
   );

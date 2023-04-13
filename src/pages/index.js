@@ -1,9 +1,9 @@
-import Image from 'next/image'
-import Select from 'react-select'
-import {useState} from 'react'
-import {Search} from '../components/search.js'
-import {Clinic} from '../components/clinic.js'
-import {ArrowLeftIcon} from '@heroicons/react/24/outline'
+import Image from "next/image";
+import Select from "react-select";
+import { useState } from "react";
+import { Search } from "../components/search.js";
+import { Clinic } from "../components/clinic.js";
+import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState("search"); // search or result
