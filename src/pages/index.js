@@ -31,12 +31,12 @@ export default function Home() {
     /*'Nutrition', 'Oncology', 'Cardiology', 'Neurology',
        'Dermatology', 'Radiology'
  */
-       { value: 'Nutrition', label: 'Nutrition' },
-       { value: 'Oncology', label: 'Oncology' },
-       { value: 'Cardiology', label: 'Cardiology' },
-       { value: 'Neurology', label: 'Neurology' },
-       { value: 'Dermatology', label: 'Dermatology' },
-       { value: 'Radiology', label: 'Radiology' }
+       { value: 'Nutrition', label: '🍎 Nutrition' },
+       { value: 'Oncology', label: '🐾 Oncology' },
+       { value: 'Cardiology', label: '💗 Cardiology' },
+       { value: 'Neurology', label: '🧠 Neurology' },
+       { value: 'Dermatology', label: '🐾 Dermatology' },
+       { value: 'Radiology', label: '🐾 Radiology' }
   ]
   return (
     <div className="min-h-screen max-w-[40vw] p-10 bg-white flex flex-col space-y-4">
