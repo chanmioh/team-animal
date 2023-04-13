@@ -23,16 +23,17 @@ export default function Home() {
       <div className="flex flex-col space-y-4">
 
         {/* Animal selector */}
-        <div>
-          Animal Category <Select isMulti options={options} />
-        </div>
+        <label>
+          <span className="label-text">Animal Category</span> 
+          <Select isMulti options={options} />
+        </label>
 
         {/* Zip input */}
-        <div className="form-control w-full max-w-xs">
+        <div className="form-control">
           <label className="label">
             <span className="label-text">Area Code</span>
           </label>
-          <input type="text" placeholder="e.g. 12345" className="input input-bordered w-full max-w-xs" />
+          <input type="text" placeholder="e.g. 12345" className="input input-bordered w-full" />
         </div>
 
         {/* Insurance toggle  */}
@@ -60,9 +61,10 @@ export default function Home() {
         </label>
 
         {/* Specialization selector */}
-        <div>
-          Specialization <Select isMulti options={options} />
-        </div>
+        <label> 
+          <span className="label-text">Specialization</span> 
+          <Select isMulti options={options} />
+        </label>
 
         <button className="btn">Search</button>
       </div>
