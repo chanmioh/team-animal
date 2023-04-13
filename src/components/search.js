@@ -10,6 +10,7 @@ export function Search(props) {
     const [whetherInsurance, setWhetherInsurance] = useState(false)
     const [whetherPracticeHub, setWhetherPracticeHub] = useState(false)
     const [whetherTelevet, setWhetherTelevet] = useState(false)
+    const [whetherEmergency, setWhetherEmergency] = useState(false)
 
     // Field validation
     const [zipValidation, setZipValidation] = useState()
@@ -78,7 +79,7 @@ export function Search(props) {
 
                 {/* PracticeHub toggle */}
                 <label className="label cursor-pointer">
-                <span className="label-text flex space-x-2 tooltip tooltip-right" data-tip="Our online pharmacy platform">
+                <span className="label-text flex space-x-2 tooltip tooltip-right" data-tip="Our online pharmacy platform!">
                     <p>Chewy PracticeHub</p> <InformationCircleIcon className="h-4" />
                 </span>
                 <input type="checkbox" className="toggle" 
@@ -94,6 +95,14 @@ export function Search(props) {
                 <input type="checkbox" className="toggle" 
                     checked={whetherTelevet} 
                     onClick={() => setWhetherTelevet(!whetherTelevet)}/>
+                </label>
+
+                {/* Emergency toggle  */}
+                <label className="label cursor-pointer">
+                <span className="label-text">  Emergency Services</span> 
+                <input type="checkbox" className="toggle" 
+                    checked={whetherEmergency} 
+                    onClick={() => setWhetherEmergency(!whetherEmergency)}/>
                 </label>
 
                 {/* Specialization selector */}
