@@ -6,7 +6,7 @@ import { InformationCircleIcon } from "@heroicons/react/24/outline";
 export function Search(props) {
   // Field values
   let categories = [];
-  const [zipCode, setZipCode] = useState();
+  const [zipCode, setZipCode] = useState("");
   const [whetherInsurance, setWhetherInsurance] = useState(false);
   const [whetherPracticeHub, setWhetherPracticeHub] = useState(false);
   const [whetherTelevet, setWhetherTelevet] = useState(false);
@@ -142,15 +142,15 @@ export function Search(props) {
 
       <button
         className={`btn ${zipValidation ? "btn-disabled" : ""} w-fit self-end`}
-        onClick={() =>
+        onClick={() => {
           props.onSearch({
             categories,
             zipCode,
             whetherInsurance,
             whetherPracticeHub,
             whetherTelevet,
-          })
-        }
+          });
+        }}
       >
         Search
       </button>
