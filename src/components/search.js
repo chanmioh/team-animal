@@ -21,6 +21,7 @@ export function Search(props) {
         { value: 'Reptile and Amphibian', label: '🐍🐟🐸 Reptiles & Amphibians' },
         { value: 'Exotic', label: '🐯🐵 Exotic' },
         { value: 'Equine', label: '🐴 Horse' },
+        { value: 'Food Animal', label: '🍔 Food Animal' },
         { value: 'Beef Cattle', label: '🐄 Beef Cattle' },
         { value: 'Dairy', label: '🥛 Dairy Cattle' }
     ]
