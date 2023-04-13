@@ -68,7 +68,9 @@ export default function Home() {
 
         {/* PracticeHub toggle */}
         <label className="label cursor-pointer">
-          <span className="label-text">PracticeHub</span> 
+          <div className="tooltip tooltip-right" data-tip="hello">
+            <span className="label-text">PracticeHub</span>
+          </div>
           <input type="checkbox" className="toggle" 
             checked={whetherPracticeHub} 
             onClick={() => setWhetherPracticeHub(!whetherPracticeHub)}/>
