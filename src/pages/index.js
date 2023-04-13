@@ -19,7 +19,7 @@ export default function Home() {
     { value: 'Dairy', label: '🥛 Dairy Cattle' }
   ]
   return (
-    <div className="min-h-screen max-w-[30vh] p-10 bg-white">
+    <div className="min-h-screen max-w-[40vw] p-10 bg-white">
       <div className="flex flex-col space-y-4">
 
         {/* Animal selector */}
@@ -45,7 +45,7 @@ export default function Home() {
 
         {/* PracticeHub toggle */}
         <label className="label cursor-pointer">
-          <span className="label-text">Uses PracticeHub</span> 
+          <span className="label-text">PracticeHub</span> 
           <input type="checkbox" className="toggle" 
             checked={whetherPracticeHub} 
             onClick={() => setWhetherPracticeHub(!whetherPracticeHub)}/>
@@ -64,6 +64,7 @@ export default function Home() {
           Specialization <Select isMulti options={options} />
         </div>
 
+        <button className="btn">Search</button>
       </div>
     </div>
   )
