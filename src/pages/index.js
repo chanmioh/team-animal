@@ -89,8 +89,8 @@ export default function Home() {
 
       {/* Televet toggle  */}
       <label className="label cursor-pointer">
-        <span className="label-text">
-          Televet Services
+        <span className="label-text flex space-x-2 tooltip tooltip-right" data-tip="Messaging and calls">
+          <p>Televet Services</p> <InformationCircleIcon className="h-4" />
         </span> 
         <input type="checkbox" className="toggle" 
           checked={whetherTelevet} 
