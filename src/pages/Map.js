@@ -25,7 +25,7 @@ const Map = ({ clinics }) => {
             : center
         }
       >
-        {clinics.map((c, idx) => (
+        {clinics?.map((c, idx) => (
           <Marker
             key={idx}
             position={{
