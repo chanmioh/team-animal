@@ -16,8 +16,8 @@ export default function Home() {
 
       <button><ArrowLeftIcon className={`h-8 self-start ${currentPage == "search" && "invisible"}`} onClick={() => setCurrentPage('search')}/></button>
       <div className="tabs self-center">
-        <a className="tab tab-bordered tab-active" onClick={() => setCurrentPage('search')}>Search Criteria</a> 
-        <a className="tab tab-bordered tab-disabled">Clinics Found</a> 
+        <a className={`tab tab-bordered ${currentPage === "search" && 'tab-active'}`} onClick={() => setCurrentPage('search')}>Search Criteria</a> 
+        <a className={`tab tab-bordered ${currentPage === "search" && "tab-disabled"} tab-active`}>Clinics Found</a> 
       </div>
       
       {currentPage == "search" && 
