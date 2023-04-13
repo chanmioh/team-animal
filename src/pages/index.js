@@ -16,32 +16,46 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <Map clinics={clinics} />
-      <ArrowLeftIcon
-        className={`h-8 self-start ${currentPage == "search" && "invisible"}`}
-        onClick={() => setCurrentPage("search")}
-      />
-      <div className="tabs self-center">
-        <a
-          className="tab tab-bordered tab-active"
-          onClick={() => setCurrentPage("search")}
-        >
-          Search Criteria
-        </a>
-        <a className="tab tab-bordered tab-disabled">Clinics Found</a>
-      </div>
+      <div className="absolute top-0 left-0 h-screen max-w-[40vw] bg-white flex flex-col p-10 space-y-4 drop-shadow-xl">
+        <button>
+          <ArrowLeftIcon
+            className={`h-8 self-start ${
+              currentPage == "search" && "invisible"
+            }`}
+            onClick={() => setCurrentPage("search")}
+          />
+        </button>
+        <div className="tabs self-center">
+          <a
+            className={`tab tab-bordered ${
+              currentPage === "search" && "tab-active"
+            }`}
+            onClick={() => setCurrentPage("search")}
+          >
+            Search Criteria
+          </a>
+          <a
+            className={`tab tab-bordered ${
+              currentPage === "search" && "tab-disabled"
+            } tab-active`}
+          >
+            Clinics Found
+          </a>
+        </div>
 
-      {currentPage == "search" && (
-        <Search
-          onSearch={(searchParams) => {
-            console.log("Search triggered");
-            console.dir(searchParams);
-            searchCriteria = searchParams;
-            setClinics();
-            setCurrentPage("result");
-          }}
-        />
-      )}
-      {currentPage == "result" && <Clinic />}
+        {currentPage == "search" && (
+          <Search
+            onSearch={(searchParams) => {
+              console.log("Search triggered");
+              console.dir(searchParams);
+              searchCriteria = searchParams;
+              setClinics();
+              setCurrentPage("result");
+            }}
+          />
+        )}
+        {currentPage == "result" && <Clinic />}
+      </div>
     </div>
   );
 }
