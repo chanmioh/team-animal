@@ -91,7 +91,7 @@ export function Search(props) {
         </label>
 
         {/* PracticeHub toggle */}
-        <label className="label cursor-pointer">
+        <label className="label cursor-pointer space-x-4">
           <span
             className="label-text flex space-x-2 tooltip tooltip-right"
             data-tip="Our integrated online pharmacy platform!"
