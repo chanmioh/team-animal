@@ -11,16 +11,15 @@ import { motion } from "framer-motion"
 export default function Home() {
   const [currentPage, setCurrentPage] = useState("search");
   const [clinics, setClinics] = useState([]);
-  const [showDrawer, setShowDrawer] = useState(true);
 
   let searchCriteria;
 
   return (
     <div>
       {/* Map */}
-      <div onMouseDown={() => setShowDrawer(false)} onMouseUp={() => setShowDrawer(true)}><Map clinics={clinics} /></div>
+      <div onMouseDown={() => setShowDrawer(false)}><Map clinics={clinics} /></div>
       {/* Drawer */}
-        <motion.div className="min-h-screen" animate={showDrawer ? {opacity: 1} : {opacity: 0}}>
+        <motion.div className="min-h-screen">
           <div className={`absolute bg-white top-0 left-0 h-screen w-80 p-6 max-w-[40vw] overflow-scroll 
           flex flex-col`}>
             {/* Back Button */}
