@@ -6,8 +6,13 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   const options = [
-    { value: 'feline', label: '🐱 Cat' },
-    { value: 'canine', label: '🐶 Dog' }
+    { value: 'Canine and Feline', label: '🐱🐶 Cat & Dog' },
+    { value: 'Avian', label: '🦜 Bird' },
+    { value: 'Reptile and Amphibian', label: '🐍🐟🐸 Reptiles & Amphibians' },
+    { value: 'Exotic', label: '🐯🐵 Exotic' },
+    { value: 'Equine', label: '🐴 Horse' },
+    { value: 'Beef Cattle', label: '🐄 Beef Cattle' },
+    { value: 'Dairy', label: '🥛 Dairy Cattle' }
   ]
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
