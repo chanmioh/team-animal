@@ -17,7 +17,7 @@ export default function Home() {
   // Field validation
   const [zipValidation, setZipValidation] = useState()
 
-  const options = [
+  const categoriesOptions = [
     { value: 'Canine and Feline', label: '🐱🐶 Cat & Dog' },
     { value: 'Avian', label: '🦜 Bird' },
     { value: 'Reptile and Amphibian', label: '🐍🐟🐸 Reptiles & Amphibians' },
@@ -26,6 +26,18 @@ export default function Home() {
     { value: 'Beef Cattle', label: '🐄 Beef Cattle' },
     { value: 'Dairy', label: '🥛 Dairy Cattle' }
   ]
+
+  const specialitiesOptions = [
+    /*'Nutrition', 'Oncology', 'Cardiology', 'Neurology',
+       'Dermatology', 'Radiology'
+ */
+       { value: 'Nutrition', label: 'Nutrition' },
+       { value: 'Oncology', label: 'Oncology' },
+       { value: 'Cardiology', label: 'Cardiology' },
+       { value: 'Neurology', label: 'Neurology' },
+       { value: 'Dermatology', label: 'Dermatology' },
+       { value: 'Radiology', label: 'Radiology' }
+  ]
   return (
     <div className="min-h-screen max-w-[40vw] p-10 bg-white">
       <div className="flex flex-col space-y-4">
@@ -33,7 +45,7 @@ export default function Home() {
         {/* Animal selector */}
         <label>
           <span className="label-text">Animal Category</span> 
-          <Select isMulti options={options} onChange={newValue => setCategories(newValue.map(value => value.value))} />
+          <Select isMulti options={categoriesOptions} onChange={newValue => setCategories(newValue.map(value => value.value))} />
         </label>
 
         {/* Zip input */}
@@ -90,7 +102,7 @@ export default function Home() {
         {/* Specialization selector */}
         <label> 
           <span className="label-text">Specialization</span> 
-          <Select isMulti options={options} />
+          <Select isMulti options={specialitiesOptions} />
         </label>
 
         <button className={`btn ${zipValidation ? "btn-disabled" : ""} w-fit self-end`}>Search</button>
