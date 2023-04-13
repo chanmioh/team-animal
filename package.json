@@ -13,6 +13,7 @@
     "@react-google-maps/api": "^2.18.1",
     "autoprefixer": "^10.4.14",
     "daisyui": "^2.51.5",
+    "framer-motion": "^10.11.6",
     "heroicons": "^2.0.17",
     "next": "^13.3.0",
     "react-select": "^5.7.2",
