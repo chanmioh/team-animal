@@ -39,7 +39,7 @@ export default function Home() {
         <label className="label">
           <span className="label-text">Area Code</span>
         </label>
-        <input type="text" placeholder="e.g. 12345" 
+        <input type="num" placeholder="e.g. 12345" 
           className={`input input-bordered 
             ${zipValidation == "incomplete" && "input-warning"} 
             ${zipValidation == "malformed" && "input-error"} 
@@ -47,10 +47,10 @@ export default function Home() {
           onChange={e => {
             const newZip = e.target.value;
             setZipCode(newZip);
-            if (newZip.length < 5 && newZip.length > 0) {
-              setZipValidation("incomplete")
-            } else if (newZip.length > 5) {
+            if (newZip.length > 5 || ! newZip.match(`^[0-9]*$`)) {
               setZipValidation("malformed")
+            } else if (newZip.length < 5 && newZip.length > 0) {
+              setZipValidation("incomplete")
             } else {
               setZipValidation()
             }
