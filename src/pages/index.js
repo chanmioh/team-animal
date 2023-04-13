@@ -16,7 +16,8 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <Map clinics={clinics} />
-      <div className="absolute top-0 left-0 h-screen max-w-[40vw] bg-white flex flex-col p-10 space-y-4 drop-shadow-xl">
+      <div className="absolute top-0 left-0 h-screen min-w-fit max-w-[40vw] bg-white flex flex-col drop-shadow-xl">
+        {/* Back Button */}
         <button>
           <ArrowLeftIcon
             className={`h-8 self-start ${
@@ -25,6 +26,8 @@ export default function Home() {
             onClick={() => setCurrentPage("search")}
           />
         </button>
+
+        {/* Tabs */}
         <div className="tabs self-center">
           <a
             className={`tab tab-bordered ${
@@ -36,13 +39,15 @@ export default function Home() {
           </a>
           <a
             className={`tab tab-bordered ${
-              currentPage === "search" && "tab-disabled"
+              currentPage === "search" && clinics.length > 0 && "tab-disabled"
             } tab-active`}
+            onClick={() => setCurrentPage("result")}
           >
             Clinics Found
           </a>
         </div>
 
+        {/* Drawer Content */}
         {currentPage == "search" && (
           <Search
             onSearch={(searchParams) => {
