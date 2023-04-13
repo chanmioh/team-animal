@@ -7,6 +7,7 @@ function getClinicsForZipcode(zipcode) {
   const filteredClinics = clinicsData.filter(
     (clinic) => clinic.zip === zipcode
   );
+  console.log(filteredClinics);
   return filteredClinics;
 }
 
@@ -24,6 +25,7 @@ export function getClinicsForCategories(categories) {
 function reducer(state, action) {
   switch (action.type) {
     case "zipcodes": {
+      console.log(action.zipcode);
       return getClinicsForZipcode(action.zipcode);
     }
     case "categories": {
@@ -32,7 +34,7 @@ function reducer(state, action) {
   }
 }
 
-const Map = () => {
+const Map = ({ zipCode }) => {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY,
   });
@@ -45,17 +47,6 @@ const Map = () => {
 
   return (
     <>
-      <button
-        class="w-full h-10 bg-white"
-        onClick={() => {
-          dispatch({
-            type: "zipcodes",
-            zipcode: "01033",
-          });
-        }}
-      >
-        Button
-      </button>
       <GoogleMap
         mapContainerClassName="w-full h-screen"
         zoom={9}
