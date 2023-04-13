@@ -9,7 +9,7 @@ import { getClinics } from "../utils/get-clinics.js";
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState("search");
-  const [clinics, setClinics] = useState();
+  const [clinics, setClinics] = useState([]);
 
   let searchCriteria;
 
