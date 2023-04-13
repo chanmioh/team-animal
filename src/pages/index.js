@@ -10,8 +10,13 @@ export default function Home() {
   const [whetherPracticeHub, setWhetherPracticeHub] = useState(false)
   const [whetherTelevet, setWhetherTelevet] = useState(false)
   const options = [
-    { value: 'feline', label: '🐱 Cat/Dog 🐶' },
-    { value: 'exotic', label: 'Exotic Animals' }
+    { value: 'Canine and Feline', label: '🐱🐶 Cat & Dog' },
+    { value: 'Avian', label: '🦜 Bird' },
+    { value: 'Reptile and Amphibian', label: '🐍🐟🐸 Reptiles & Amphibians' },
+    { value: 'Exotic', label: '🐯🐵 Exotic' },
+    { value: 'Equine', label: '🐴 Horse' },
+    { value: 'Beef Cattle', label: '🐄 Beef Cattle' },
+    { value: 'Dairy', label: '🥛 Dairy Cattle' }
   ]
   return (
     <div className="min-h-screen max-w-[30vh] p-10 bg-white">
