@@ -6,7 +6,7 @@ import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import Map from "./Map.js";
 import { getClinics } from "../utils/get-clinics.js";
 import Results from "./Results.js";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState("search");
@@ -20,8 +20,10 @@ export default function Home() {
       <Map clinics={clinics} />
       {/* Drawer */}
       <div className="min-h-screen">
-        <div className={`absolute bg-white top-0 left-0 h-screen w-80 p-6 max-w-[40vw] overflow-scroll 
-        flex flex-col`}>
+        <div
+          className={`absolute bg-white top-0 left-0 h-screen w-80 p-6 max-w-[40vw] overflow-scroll 
+        flex flex-col`}
+        >
           {/* Back Button */}
           <button>
             <ArrowLeftIcon

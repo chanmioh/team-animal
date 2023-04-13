@@ -76,6 +76,19 @@ export function Search(props) {
                 setZipValidation();
               }
             }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                zipValidation
+                  ? null
+                  : props.onSearch({
+                      categories,
+                      zipCode,
+                      whetherInsurance,
+                      whetherPracticeHub,
+                      whetherTelevet,
+                    });
+              }
+            }}
           />
         </div>
 
