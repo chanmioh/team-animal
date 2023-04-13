@@ -5,7 +5,7 @@ import {InformationCircleIcon} from '@heroicons/react/24/outline'
 
 export function Search(props) {
     // Field values
-    const [categories, setCategories] = useState([])
+    var categories = []
     const [zipCode, setZipCode] = useState()
     const [whetherInsurance, setWhetherInsurance] = useState(false)
     const [whetherPracticeHub, setWhetherPracticeHub] = useState(false)
@@ -42,7 +42,7 @@ export function Search(props) {
                 {/* Animal selector */}
                 <label>
                 <span className="label-text">Animal Category</span> 
-                <Select isMulti options={categoriesOptions} onChange={newValue => setCategories(newValue.map(value => value.value))} />
+                <Select isMulti options={categoriesOptions} onChange={newValue => categories = newValue.map(value => value.value)} />
                 </label>
 
                 {/* Zip input */}
@@ -73,7 +73,7 @@ export function Search(props) {
                 <span className="label-text">Accepts Insurance</span> 
                 <input type="checkbox" className="toggle" 
                     checked={whetherInsurance} 
-                    onClick={() => setWhetherInsurance(!whetherInsurance)}/>
+                    onChange={() => setWhetherInsurance(!whetherInsurance)}/>
                 </label>
 
                 {/* PracticeHub toggle */}
@@ -103,8 +103,10 @@ export function Search(props) {
                 </label>
             </div>
 
-            <button className={`btn ${zipValidation ? "btn-disabled" : ""} w-fit self-end`}>Search</button>
-        
+            <button 
+                className={`btn ${zipValidation ? "btn-disabled" : ""} w-fit self-end`}
+                onClick={() => props.onSearch({categories, zipCode, whetherInsurance, whetherPracticeHub, whetherTelevet})}
+                >Search</button>
         </div>
     );
 }
