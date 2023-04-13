@@ -39,8 +39,9 @@ export default function Home() {
           </a>
           <a
             className={`tab tab-bordered ${
-              currentPage === "search" && "tab-disabled"
+              currentPage === "search" && length(clinics) > 0 && "tab-disabled"
             } tab-active`}
+            onClick={() => setCurrentPage("result")}
           >
             Clinics Found
           </a>
