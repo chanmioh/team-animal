@@ -9,6 +9,7 @@ import Map from "./Map.js";
 export default function Home() {
   const [currentPage, setCurrentPage] = useState("search");
   const [zipCode, setZipCode] = useState("");
+  const [clinics, setClinics] = useState();
 
   return (
     <div className="min-h-screen">
@@ -22,7 +23,17 @@ export default function Home() {
           <a className="tab tab-bordered tab-disabled">Clinics Found</a>
         </div>
 
-        <Search zipCode={zipCode} setZipCode={setZipCode} />
+        {currentPage == "search" && (
+          <Search
+            onSearch={(searchParams) => {
+              console.log("Search triggered");
+              console.dir(searchParams);
+              setClinics();
+              setCurrentPage("result");
+            }}
+          />
+        )}
+        {currentPage == "result" && <Clinic />}
       </div>
     </div>
   );
