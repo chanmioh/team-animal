@@ -14,7 +14,7 @@ export default function Home() {
     { value: 'exotic', label: 'Exotic Animals' }
   ]
   return (
-    <div className="min-h-screen min-w-fit max-w-[30vh] p-10 bg-white">
+    <div className="min-h-screen max-w-[30vh] p-10 bg-white">
       <div className="flex flex-col space-y-4">
 
         {/* Animal selector */}
@@ -25,27 +25,22 @@ export default function Home() {
         {/* Zip input */}
         <div className="form-control w-full max-w-xs">
           <label className="label">
-            <span className="label-text">ZIP Code</span>
+            <span className="label-text">Area Code</span>
           </label>
           <input type="text" placeholder="e.g. 12345" className="input input-bordered w-full max-w-xs" />
         </div>
 
         {/* Insurance toggle  */}
         <label className="label cursor-pointer">
-          <span className="label-text">Insurance</span> 
+          <span className="label-text">Has Insurance</span> 
           <input type="checkbox" className="toggle" 
             checked={whetherInsurance} 
             onClick={() => setWhetherInsurance(!whetherInsurance)}/>
         </label>
 
-        {/* Specialization selector */}
-        <div>
-          Specialization <Select isMulti options={options} />
-        </div>
-
         {/* PracticeHub toggle */}
         <label className="label cursor-pointer">
-          <span className="label-text">PracticeHub</span> 
+          <span className="label-text">Uses PracticeHub</span> 
           <input type="checkbox" className="toggle" 
             checked={whetherPracticeHub} 
             onClick={() => setWhetherPracticeHub(!whetherPracticeHub)}/>
@@ -53,11 +48,16 @@ export default function Home() {
 
         {/* Televet toggle  */}
         <label className="label cursor-pointer">
-          <span className="label-text">Televet</span> 
+          <span className="label-text">Offers Televet</span> 
           <input type="checkbox" className="toggle" 
             checked={whetherTelevet} 
             onClick={() => setWhetherTelevet(!whetherTelevet)}/>
         </label>
+
+        {/* Specialization selector */}
+        <div>
+          Specialization <Select isMulti options={options} />
+        </div>
 
       </div>
     </div>
