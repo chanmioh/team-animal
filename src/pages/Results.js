@@ -6,7 +6,7 @@ export default function Results(props) {
   }
 
   return (
-    <div className="overflow-auto flex flex-col bg-white">
+    <div className="flex flex-col bg-white">
       {props.clinics.map((c, idx) => (
         <Clinic key={idx} clinic={c} />
       ))}
