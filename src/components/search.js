@@ -4,12 +4,12 @@ import { useState } from "react";
 import { InformationCircleIcon } from "@heroicons/react/24/outline";
 
 export function Search(props) {
-    // Field values
-    var categories = []
-    const [categories, setCategories] = useState([])
-    const [whetherInsurance, setWhetherInsurance] = useState(false)
-    const [whetherPracticeHub, setWhetherPracticeHub] = useState(false)
-    const [whetherTelevet, setWhetherTelevet] = useState(false)
+  // Field values
+  var categories = [];
+  const [categories, setCategories] = useState([]);
+  const [whetherInsurance, setWhetherInsurance] = useState(false);
+  const [whetherPracticeHub, setWhetherPracticeHub] = useState(false);
+  const [whetherTelevet, setWhetherTelevet] = useState(false);
 
   // Field validation
   const [zipValidation, setZipValidation] = useState();
@@ -28,22 +28,28 @@ export function Search(props) {
     /*'Nutrition', 'Oncology', 'Cardiology', 'Neurology',
         'Dermatology', 'Radiology'
     */
-        { value: 'Nutrition', label: 'Nutrition' },
-        { value: 'Oncology', label: 'Oncology' },
-        { value: 'Cardiology', label: 'Cardiology' },
-        { value: 'Neurology', label: 'Neurology' },
-        { value: 'Dermatology', label: 'Dermatology' },
-        { value: 'Radiology', label: 'Radiology' }
-    ]
-    
-    return (
-        <div className="flex flex-col p-10 space-y-16">
-            <div className="flex flex-col space-y-4">
-                {/* Animal selector */}
-                <label>
-                <span className="label-text">Animal Category</span> 
-                <Select isMulti options={categoriesOptions} onChange={newValue => categories = newValue.map(value => value.value)} />
-                </label>
+    { value: "Nutrition", label: "Nutrition" },
+    { value: "Oncology", label: "Oncology" },
+    { value: "Cardiology", label: "Cardiology" },
+    { value: "Neurology", label: "Neurology" },
+    { value: "Dermatology", label: "Dermatology" },
+    { value: "Radiology", label: "Radiology" },
+  ];
+
+  return (
+    <div className="flex flex-col p-10 space-y-16">
+      <div className="flex flex-col space-y-4">
+        {/* Animal selector */}
+        <label>
+          <span className="label-text">Animal Category</span>
+          <Select
+            isMulti
+            options={categoriesOptions}
+            onChange={(newValue) =>
+              (categories = newValue.map((value) => value.value))
+            }
+          />
+        </label>
 
         {/* Zip input */}
         <div className="form-control">
@@ -59,7 +65,7 @@ export function Search(props) {
                     w-full`}
             onChange={(e) => {
               const newZip = e.target.value;
-              setZipCode(newZip);
+              props.setZipCode(newZip);
               if (newZip.length > 5 || !newZip.match(`^[0-9]*$`)) {
                 setZipValidation("malformed");
               } else if (newZip.length < 5 && newZip.length > 0) {
@@ -71,13 +77,16 @@ export function Search(props) {
           />
         </div>
 
-                {/* Insurance toggle  */}
-                <label className="label cursor-pointer">
-                <span className="label-text">Accepts Insurance</span> 
-                <input type="checkbox" className="toggle" 
-                    checked={whetherInsurance} 
-                    onChange={() => setWhetherInsurance(!whetherInsurance)}/>
-                </label>
+        {/* Insurance toggle  */}
+        <label className="label cursor-pointer">
+          <span className="label-text">Accepts Insurance</span>
+          <input
+            type="checkbox"
+            className="toggle"
+            checked={whetherInsurance}
+            onChange={() => setWhetherInsurance(!whetherInsurance)}
+          />
+        </label>
 
         {/* PracticeHub toggle */}
         <label className="label cursor-pointer">
@@ -118,10 +127,20 @@ export function Search(props) {
         </label>
       </div>
 
-            <button 
-                className={`btn ${zipValidation ? "btn-disabled" : ""} w-fit self-end`}
-                onClick={() => props.onSearch({categories, props.zipCode, whetherInsurance, whetherPracticeHub, whetherTelevet})}
-                >Search</button>
-        </div>
-    );
+      <button
+        className={`btn ${zipValidation ? "btn-disabled" : ""} w-fit self-end`}
+        onClick={() =>
+          props.onSearch({
+            categories,
+            zipCode,
+            whetherInsurance,
+            whetherPracticeHub,
+            whetherTelevet,
+          })
+        }
+      >
+        Search
+      </button>
+    </div>
+  );
 }

@@ -25,6 +25,8 @@ export default function Home() {
 
         {currentPage == "search" && (
           <Search
+            zipCode={zipCode}
+            setZipCode={setZipCode}
             onSearch={(searchParams) => {
               console.log("Search triggered");
               console.dir(searchParams);
