@@ -15,18 +15,13 @@ module.exports = {
     },
   },
   plugins: [require("daisyui")],
+  darkMode: 'class',
   daisyui: {
     themes: [
       {
         light: {
           ...require("daisyui/src/colors/themes")["[data-theme=light]"],
           primary: "#1c49c2",
-          secondary: "#1c49c2",
-        },
-        dark: {
-          ...require("daisyui/src/colors/themes")["[data-theme=dark]"],
-          primary: "#1c49c2",
-          secondary: "#1c49c2",
         }
       }
     ]
