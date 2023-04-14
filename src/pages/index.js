@@ -13,6 +13,7 @@ export default function Home() {
   const [currentPage, setCurrentPage] = useState("search"); // search, result, clinic
   const [currentClinic, setCurrentClinic] = useState(); // search, result, clinic
   const [clinics, setClinics] = useState([]);
+  const [showToast, setShowToast] = useState(false);
 
   let searchCriteria;
 
@@ -37,6 +38,22 @@ export default function Home() {
 
   return (
     <div>
+      {/* Issue toast */}
+      {showToast && <div className="fixed w-screen top-6 z-[100] flex justify-center">
+        <div className="max-w-xl max-w-fit alert alert-info shadow-lg">
+          <div>
+            <span className="text-xl px-2">😿</span>
+            I'm sorry, no clinics matched your criteria. Please try again!
+            <button className="button button"></button>
+          </div>
+          <div className="flex-none">
+            <button className="btn btn-circle btn-primary" onClick={() => setShowToast(false)}>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+          </div>
+        </div>
+      </div>}
+
       {/* Map */}
       <Map
         clinics={clinics}
@@ -98,11 +115,17 @@ export default function Home() {
           {currentPage == "search" && (
             <Search
               onSearch={(searchParams) => {
-                console.log("Search triggered");
+                console.log("Search triggered with the following parameters:");
                 console.dir(searchParams);
                 searchCriteria = searchParams;
-                setClinics(getClinics(searchCriteria));
-                setCurrentPage("result");
+                const searchedClinics = getClinics(searchCriteria);
+                if (searchedClinics.length > 0) {
+                  setClinics(searchedClinics);
+                  setCurrentPage("result");
+                  setShowToast(false);
+                } else {
+                  setShowToast(true);
+                }
               }}
             />
           )}
@@ -118,6 +141,7 @@ export default function Home() {
           {currentPage == "clinic" && <Details clinic={currentClinic} />}
         </div>
       </div>
+
       {/* Credits */}
       <span className="fixed bottom-4 w-screen text-center text-xs text-white mt-6">
         <p>Made for Chewy Diversity Hackathon 2023 by team "PawCare".</p>
