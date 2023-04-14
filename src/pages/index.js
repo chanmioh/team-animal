@@ -46,7 +46,7 @@ export default function Home() {
       />
       {/* Drawer */}
       <div
-        className={`fixed bg-primary-content top-0 left-0 h-screen w-80 p-6 max-w-[40vw] overflow-x-visible overflow-y-clip
+        className={`fixed bg-primary-content top-0 left-0 h-screen w-80 p-6 max-w-[40vw] overflow-x-visible
       flex flex-col drop-shadow-2xl`}
       >
         {/* Back Button */}
@@ -94,7 +94,7 @@ export default function Home() {
         </div>
 
         {/* Drawer Content */}
-        <div>
+        <div className="overflow-y-auto">
           {currentPage == "search" && (
             <Search
               onSearch={(searchParams) => {

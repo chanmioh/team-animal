@@ -108,10 +108,12 @@ export function Search(props) {
         {/* PracticeHub toggle */}
         <label className="label cursor-pointer space-x-4">
           <span
-            className="label-text flex space-x-2 tooltip tooltip-right"
-            data-tip="Our integrated online pharmacy platform!"
+            className="label-text flex space-x-2"
           >
-            <p>Chewy Practice Hub</p> <InformationCircleIcon className="h-4" />
+            <p>Chewy Practice Hub</p> 
+            <a target="_blank" href="https://www.chewyhealth.com/practicehub/">
+              <InformationCircleIcon className="h-4" />
+            </a>
           </span>
           <input
             type="checkbox"
@@ -123,12 +125,7 @@ export function Search(props) {
 
         {/* Televet toggle  */}
         <label className="label cursor-pointer">
-          <span
-            className="label-text flex space-x-2 tooltip tooltip-right"
-            data-tip="Connect with veterinarians about questions!"
-          >
-            <p>TeleVet Services</p> <InformationCircleIcon className="h-4" />
-          </span>
+          <span className="label-text">TeleVet Services</span>
           <input
             type="checkbox"
             className="toggle toggle-primary"
