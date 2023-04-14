@@ -1,4 +1,5 @@
 import clinicsData from "../../final_clinic_data.json";
+import distanceData from "../../02215.json";
 import haversine from "haversine-distance";
 import Case from "case";
 
@@ -42,6 +43,15 @@ export function getClinics(searchParams) {
     });
   }
   console.log(result);
+
+  if (searchParams.address?.length > 0) {
+    result.array.forEach(clinic => {
+      ddForClinic = distanceData.find(dd => clinic.clinic_name === dd.clinic_name);
+      clinic.walkTime = ddForClinic["walking_time"];;
+      clinic.transitTime = ddForClinic["public_transit_time"];
+      clinic.drivingTime = ddForClinic["driving_time"];
+    });
+  }
 
   return result.map((clinic) => caseFix(clinic));
 }

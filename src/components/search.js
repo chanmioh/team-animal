@@ -202,6 +202,7 @@ export function Search(props) {
         } w-fit self-end`}
         onClick={() => {
           props.onSearch({
+            address,
             zipCode,
             categories,
             specialties,
