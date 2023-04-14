@@ -83,14 +83,14 @@ export default function Home() {
           >
             Search
           </a>
-          <a
+          <button
             className={`tab tab-bordered ${
-              currentPage === "result" && "tab-active"
+              clinics.length <= 0 && "tab-disabled"
             }`}
-            onClick={() => setCurrentPage("result")}
+            onClick={() => {if (clinics.length > 0) {setCurrentPage("result")}}}
           >
             Results
-          </a>
+          </button>
         </div>
 
         {/* Drawer Content */}
