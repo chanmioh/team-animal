@@ -35,31 +35,31 @@ export function Details(props) {
     let phoneNumDisplay = phoneNum ? "(" + phoneNum.substring(0, 3) + ")" + " " + phoneNum.substring(3, 6) + "-" + phoneNum.substring(6) : "📞 Unknown"
 
     const phoneNumLink = "tel:+" + phoneNum
-    return (<div className="text-lg space-y-1 bg-white flex flex flex-col py-6">
-        <div className="mb-3"> 
-            <div className="text-2xl font-medium">{props.clinic.clinic_name}</div>
+    return (<div className="text-lg space-y-1 bg-white flex flex-col py-6">
+        <div className="pb-8"> 
+            <div className="text-2xl font-bold pb-4">{props.clinic.clinic_name}</div>
             <div className="capitalize"><a href={gMapLink} target="_blank">🗺️</a> {fullAddress}</div>
             <div><a href={phoneNumLink} >📞</a>  {phoneNumDisplay}</div>
             <div>{props.clinic.accepts_insurance ? takesInsurance : noInsurance}</div>
         </div>
         
         {categories.length != 0 &&
-            <div className="py-3 border-t-2">
-                <div className="font-medium"> Animal Categories:</div>
+            <div className="py-8 border-t-2">
+                <div className="font-bold pb-4"> Animal Categories</div>
                 {categories.map(category => <div>✓ {category}</div>)}
             </div>
          }
         
         {specialties.length != 0 &&
-            <div className="py-3 border-t-2">
-                <div className="font-medium">Specialties:</div>
+            <div className="py-8 border-t-2 ">
+                <div className="font-bold pb-4">Specialties</div>
                 {specialties.map(specialty => <div>✓ {specialty}</div>)}
             </div>
          }
 
         {offerings.length != 0 &&
-            <div className="pt-3 border-t-2">
-                <div className="font-medium">Additional Offerings: </div>
+            <div className="pt-8 border-t-2">
+                <div className="font-bold pb-4">Additional Offerings</div>
                 {offerings.map(offering => <div>✓ {offering}</div>)}
             </div>
          }
