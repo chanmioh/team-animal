@@ -8,7 +8,7 @@ export default function Document() {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
       </Head>
-      <body className="text-black font-display">
+      <body className="text-gray-800 font-display">
         <Main />
         <NextScript />
       </body>
