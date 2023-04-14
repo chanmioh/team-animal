@@ -6,8 +6,8 @@ import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import Map from "./Map.js";
 import { getClinics } from "../utils/get-clinics.js";
 import Results from "./Results.js";
-import { motion } from "framer-motion"
-import {Details} from "../components/details.js"
+import { motion } from "framer-motion";
+import { Details } from "../components/details.js";
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState("search"); // search, result, clinic
@@ -19,20 +19,24 @@ export default function Home() {
   const backButton = () => {
     switch (currentPage) {
       case "result":
-        setCurrentPage("search")
+        setCurrentPage("search");
         return;
       case "clinic":
-        setCurrentPage("result")
+        setCurrentPage("result");
         return;
       default:
         return;
     }
-  }
+  };
 
   return (
     <div>
       {/* Map */}
-      <Map clinics={clinics} />
+      <Map
+        clinics={clinics}
+        currentClinic={currentClinic}
+        setCurrentClinic={setCurrentClinic}
+      />
       {/* Drawer */}
       <div className="min-h-screen">
         <div
@@ -46,8 +50,8 @@ export default function Home() {
                 currentPage == "search" && "invisible"
               }`}
               onClick={() => {
-                backButton()
-              }} 
+                backButton();
+              }}
             />
           </button>
 
@@ -84,8 +88,16 @@ export default function Home() {
                 }}
               />
             )}
-            {currentPage == "result" && <Results clinics={clinics} onSeeMore={clinic => {setCurrentPage("clinic"); setCurrentClinic(clinic)}}/>}
-            {currentPage == "clinic" && <Details clinic={currentClinic}/>}
+            {currentPage == "result" && (
+              <Results
+                clinics={clinics}
+                onSeeMore={(clinic) => {
+                  setCurrentPage("clinic");
+                  setCurrentClinic(clinic);
+                }}
+              />
+            )}
+            {currentPage == "clinic" && <Details clinic={currentClinic} />}
           </div>
         </div>
       </div>
