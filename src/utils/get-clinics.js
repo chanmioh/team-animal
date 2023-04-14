@@ -46,7 +46,7 @@ export function getClinics(searchParams) {
 
   if (searchParams.address?.length > 0) {
     result.forEach(clinic => {
-      const ddForClinic = distanceData.find(dd => clinic.clinic_name === dd.clinic_name);
+      const ddForClinic = distanceData.find(dd => clinic.clinic_name === dd.clinic_name && clinic.address1 === dd.address1 && clinic.adress2 === dd.adress2);
       clinic.walkTime = ddForClinic["walking_time"];;
       clinic.transitTime = ddForClinic["public_transit_time"];
       clinic.drivingTime = ddForClinic["driving_time"];
