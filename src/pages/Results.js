@@ -1,14 +1,16 @@
 import Clinic from "../components/clinic.js";
 
-export default function Results(props) {
-  if (!props.clinics) {
+export default function Results({clinics, onSeeMore}) {
+  if (!clinics) {
     return <>No clinics found</>;
   }
 
   return (
-    <div className="flex flex-col bg-white">
-      {props.clinics.map((c, idx) => (
-        <Clinic key={idx} clinic={c} />
+    <div className="overflow-auto flex flex-col bg-white">
+      {clinics.map((c, idx) => (
+        <button onClick={() => onSeeMore(c)}>
+          <Clinic key={idx} clinic={c} />
+        </button>
       ))}
     </div>
   );

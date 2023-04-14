@@ -7,9 +7,11 @@ import Map from "./Map.js";
 import { getClinics } from "../utils/get-clinics.js";
 import Results from "./Results.js";
 import { motion } from "framer-motion"
+import {Details} from "../components/details.js"
 
 export default function Home() {
-  const [currentPage, setCurrentPage] = useState("search");
+  const [currentPage, setCurrentPage] = useState("search"); // search, result, clinic
+  const [currentClinic, setCurrentClinic] = useState(); // search, result, clinic
   const [clinics, setClinics] = useState([]);
 
   let searchCriteria;
@@ -28,7 +30,7 @@ export default function Home() {
               className={`h-8 self-start ${
                 currentPage == "search" && "invisible"
               }`}
-              onClick={() => setCurrentPage("search")}
+              onClick={() => setCurrentPage("search")} 
             />
           </button>
 
@@ -65,7 +67,8 @@ export default function Home() {
                 }}
               />
             )}
-            {currentPage == "result" && <Results clinics={clinics} />}
+            {currentPage == "result" && <Results clinics={clinics} onSeeMore={clinic => {setCurrentPage("clinic"); setCurrentClinic(clinic)}}/>}
+            {currentPage == "clinic" && <Details clinic={currentClinic}/>}
           </div>
         </div>
       </div>
