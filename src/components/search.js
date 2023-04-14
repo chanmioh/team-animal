@@ -97,7 +97,7 @@ export function Search(props) {
           <span className="label-text">Accepts Insurance</span>
           <input
             type="checkbox"
-            className="toggle"
+            className="toggle toggle-primary"
             checked={whetherInsurance}
             onChange={() => setWhetherInsurance(!whetherInsurance)}
           />
@@ -113,7 +113,7 @@ export function Search(props) {
           </span>
           <input
             type="checkbox"
-            className="toggle"
+            className="toggle toggle-primary"
             checked={whetherPracticeHub}
             onClick={() => setWhetherPracticeHub(!whetherPracticeHub)}
           />
@@ -129,7 +129,7 @@ export function Search(props) {
           </span>
           <input
             type="checkbox"
-            className="toggle"
+            className="toggle-primary"
             checked={whetherTelevet}
             onClick={() => setWhetherTelevet(!whetherTelevet)}
           />
@@ -140,7 +140,7 @@ export function Search(props) {
           <span className="label-text"> Emergency Services</span>
           <input
             type="checkbox"
-            className="toggle"
+            className="toggle-primary"
             checked={whetherEmergency}
             onClick={() => setWhetherEmergency(!whetherEmergency)}
           />
