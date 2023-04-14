@@ -16,6 +16,19 @@ export default function Home() {
 
   let searchCriteria;
 
+  const backButton = () => {
+    switch (currentPage) {
+      case "result":
+        setCurrentPage("search")
+        return;
+      case "clinic":
+        setCurrentPage("result")
+        return;
+      default:
+        return;
+    }
+  }
+
   return (
     <div>
       {/* Map */}
@@ -23,16 +36,18 @@ export default function Home() {
       {/* Drawer */}
       <div className="min-h-screen">
         <div
-          className={`absolute bg-white top-0 left-0 h-screen w-80 p-6 max-w-[40vw] overflow-scroll 
+          className={`absolute bg-neutral top-0 left-0 h-screen w-80 p-6 max-w-[40vw] overflow-scroll 
         flex flex-col`}
         >
           {/* Back Button */}
-          <button>
+          <button className="max-w-fit">
             <ArrowLeftIcon
               className={`h-8 self-start ${
                 currentPage == "search" && "invisible"
               }`}
-              onClick={() => setCurrentPage("search")} 
+              onClick={() => {
+                backButton()
+              }} 
             />
           </button>
 
