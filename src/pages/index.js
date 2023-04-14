@@ -22,8 +22,10 @@ export default function Home() {
       <Map clinics={clinics} />
       {/* Drawer */}
       <div className="min-h-screen">
-        <div className={`absolute bg-white top-0 left-0 h-screen w-80 p-6 max-w-[40vw] overflow-scroll 
-        flex flex-col`}>
+        <div
+          className={`absolute bg-white top-0 left-0 h-screen w-80 p-6 max-w-[40vw] overflow-scroll 
+        flex flex-col`}
+        >
           {/* Back Button */}
           <button>
             <ArrowLeftIcon

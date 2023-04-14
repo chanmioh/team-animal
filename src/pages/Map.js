@@ -12,30 +12,28 @@ const Map = ({ clinics }) => {
   if (!isLoaded) return <>Loading...</>;
 
   return (
-    <>
-      <GoogleMap
-        mapContainerClassName="w-full h-screen"
-        zoom={9}
-        center={
-          clinics && clinics[0]
-            ? {
-                lat: parseFloat(clinics[0].latitude),
-                lng: parseFloat(clinics[0].longitude),
-              }
-            : center
-        }
-      >
-        {clinics?.map((c, idx) => (
-          <Marker
-            key={idx}
-            position={{
-              lat: parseFloat(c.latitude),
-              lng: parseFloat(c.longitude),
-            }}
-          />
-        ))}
-      </GoogleMap>
-    </>
+    <GoogleMap
+      mapContainerClassName="w-full h-screen"
+      zoom={9}
+      center={
+        clinics && clinics[0]
+          ? {
+              lat: parseFloat(clinics[0].latitude),
+              lng: parseFloat(clinics[0].longitude),
+            }
+          : center
+      }
+    >
+      {clinics?.map((c, idx) => (
+        <Marker
+          key={idx}
+          position={{
+            lat: parseFloat(c.latitude),
+            lng: parseFloat(c.longitude),
+          }}
+        />
+      ))}
+    </GoogleMap>
   );
 };
 
