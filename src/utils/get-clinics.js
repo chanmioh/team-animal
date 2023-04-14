@@ -25,9 +25,9 @@ export function getClinics(searchParams) {
 
   result = result.filter((clinic) => {
     return (
-      clinic.accepts_insurance == searchParams.whetherInsurance &&
-      clinic.practiceHub == searchParams.whetherPracticeHub &&
-      clinic.televet_services == searchParams.whetherTelevet
+      (!searchParams.whetherInsurance || (clinic.accepts_insurance == searchParams.whetherInsurance)) &&
+      (!searchParams.whetherPracticeHub || (clinic.practiceHub == searchParams.whetherPracticeHub)) &&
+      (!searchParams.whetherTelevet || (clinic.televet_services == searchParams.whetherTelevet))
     );
   });
 
