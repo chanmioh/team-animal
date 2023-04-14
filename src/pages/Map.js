@@ -10,7 +10,6 @@ const Map = (props) => {
   const center = { lat: 42.359532, lng: -71.057549 };
 
   function getCenter() {
-    console.log(props.currentClinic);
     if (props.currentClinic) {
       return {
         lat: parseFloat(props.currentClinic.latitude),
