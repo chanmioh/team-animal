@@ -37,6 +37,7 @@ export default function Home() {
         clinics={clinics}
         currentClinic={currentClinic}
         setCurrentClinic={setCurrentClinic}
+        setCurrentPage={setCurrentPage}
       />
       {/* Drawer */}
       <div

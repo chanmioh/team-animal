@@ -40,7 +40,12 @@ const Map = (props) => {
             lat: parseFloat(c.latitude),
             lng: parseFloat(c.longitude),
           }}
-          onClick={() => props.setCurrentClinic(c)}
+          onClick={() => {
+            // Updates the currently selected clinic.
+            props.setCurrentClinic(c);
+            // Displays current page as clinic.
+            props.setCurrentPage("clinic");
+          }}
         />
       ))}
     </GoogleMap>
