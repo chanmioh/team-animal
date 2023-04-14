@@ -26,7 +26,7 @@ export function Details(props) {
     const address = props.clinic.address1 + (props.clinic.adress2 ? " " + props.clinic.adress2 : "") + ", "
     const fullAddress = address + props.clinic.city + ', ' + props.clinic.state + ' '+ props.clinic.zip
 
-    const gMapLink = 'http://maps.google.com/?q=' + props.clinic.clinic_name
+    const gMapLink = 'http://maps.google.com/?q=' + fullAddress
 
     const phoneNum = props.clinic.phone
     let phoneNumDisplay = phoneNum ? "(" + phoneNum.substring(0, 3) + ")" + " " + phoneNum.substring(3, 6) + "-" + phoneNum.substring(6) : "📞 Unknown"
