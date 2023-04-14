@@ -198,7 +198,7 @@ export function Search(props) {
 
       <button
         className={`btn ${
-          zipValidation ? "btn-disabled" : "btn-primary"
+          zipValidation || addressValidation ? "btn-disabled" : "btn-primary"
         } w-fit self-end`}
         onClick={() => {
           props.onSearch({
