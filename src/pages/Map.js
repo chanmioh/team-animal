@@ -1,5 +1,11 @@
 import { useMemo, useState, useReducer } from "react";
-import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
+import {
+  GoogleMap,
+  MarkerWithLabel,
+  Marker,
+  useLoadScript,
+  DistanceMatrixService,
+} from "@react-google-maps/api";
 
 const Map = (props) => {
   const { isLoaded } = useLoadScript({
@@ -27,6 +33,8 @@ const Map = (props) => {
 
   if (!isLoaded) return <>Loading...</>;
 
+  const zipcodeCoords = { lat: 42.359532, lng: -71.057549 };
+
   return (
     <GoogleMap
       mapContainerClassName="w-full h-screen"
@@ -46,6 +54,14 @@ const Map = (props) => {
             // Displays current page as clinic.
             props.setCurrentPage("clinic");
           }}
+          // labelStyle={{
+          //   textAlign: "center",
+          //   width: "10px",
+          //   height: "10px",
+          //   backgroundColor: "#7fffd4",
+          //   fontSize: "14px",
+          // }}
+          // labelAnchor={{ x: 0, y: 0 }}
         />
       ))}
     </GoogleMap>

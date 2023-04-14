@@ -84,6 +84,7 @@ export function Search(props) {
                   ? null
                   : props.onSearch({
                       categories,
+                      specialties,
                       zipCode,
                       whetherInsurance,
                       whetherPracticeHub,
@@ -107,10 +108,8 @@ export function Search(props) {
 
         {/* PracticeHub toggle */}
         <label className="label cursor-pointer space-x-4">
-          <span
-            className="label-text flex space-x-2"
-          >
-            <p>Chewy Practice Hub</p> 
+          <span className="label-text flex space-x-2">
+            <p>Chewy Practice Hub</p>
             <a target="_blank" href="https://www.chewyhealth.com/practicehub/">
               <InformationCircleIcon className="h-4" />
             </a>
