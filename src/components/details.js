@@ -67,9 +67,9 @@ export function Details(props) {
         </div>
         
         {haveTimeData && <div className="flex flex-col py-8 border-t-2">
-            <div>🚶 {props.clinic.walkTime}min</div> 
-            <div>🚉 {props.clinic.transitTime}min</div>
-            <div>🚗 {props.clinic.drivingTime}min</div>
+            <div>{props.clinic.walkTime} minute walk 🚶</div> 
+            <div>{props.clinic.transitTime} minute transit time 🚉</div>
+            <div>{props.clinic.drivingTime} minute drive 🚗</div>
             </div>}
 
         {categories.length != 0 &&
