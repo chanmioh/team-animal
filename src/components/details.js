@@ -38,12 +38,10 @@ export function Details(props) {
     return (<div className="text-lg space-y-1 bg-white flex flex flex-col  border-y-2 py-6">
         <div className="mb-3"> 
             <div className="text-2xl font-medium">{props.clinic.clinic_name}</div>
-            <div><a href={gMapLink} target="_blank">🗺️</a> {fullAddress}</div>
+            <div className="capitalize"><a href={gMapLink} target="_blank">🗺️</a> {fullAddress}</div>
             <div><a href={phoneNumLink} >📞</a>  {phoneNumDisplay}</div>
             <div>{props.clinic.accepts_insurance ? takesInsurance : noInsurance}</div>
         </div>
-        
-
         
         {categories.length != 0 &&
             <div className="pt-3 border-t-2 mb-3">

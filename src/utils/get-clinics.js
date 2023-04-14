@@ -1,8 +1,17 @@
 import clinicsData from "../../final_clinic_data.json";
+import Case from 'case'
 
 // Get clinics matching given search params.
 export function getClinics(searchParams) {
   let result = clinicsData;
+
+  const caseFix = (clinic) => {
+    clinic.clinic_name = Case.capital(clinic.clinic_name);
+    clinic.address1 = Case.capital(clinic.address1);
+    clinic.adress2 = Case.capital(clinic.adress2);
+    clinic.city = Case.capital(clinic.city);
+    return clinic;
+  }
 
   // If there is a zipcode, filter for it in the clinics.
   if (searchParams.zipCode) {
@@ -32,5 +41,5 @@ export function getClinics(searchParams) {
   }
   console.log(result);
 
-  return result;
+  return result.map(clinic => caseFix(clinic));
 }

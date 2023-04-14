@@ -1,3 +1,5 @@
+import Case from 'case'
+
 export default function Clinic({ clinic }) {
   const takesInsurance = "✔ Takes Insurance";
   const noInsurance = "❌ Doesn't Take Insurance";
