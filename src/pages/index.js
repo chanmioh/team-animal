@@ -39,7 +39,7 @@ export default function Home() {
   return (
     <div>
       {/* Issue toast */}
-      {showToast && <div className="fixed w-screen top-6 z-[100] flex justify-center">
+      {showToast && <motion.div className="fixed w-screen top-6 z-[100] flex justify-center" initial={{opacity:0 }} animate={{opacity:1}} exit={{opacity:0}}>
         <div className="max-w-xl max-w-fit alert alert-info shadow-lg">
           <div>
             <span className="text-xl px-2">😿</span>
@@ -52,7 +52,7 @@ export default function Home() {
             </button>
           </div>
         </div>
-      </div>}
+      </motion.div>}
 
       {/* Map */}
       <Map
