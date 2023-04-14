@@ -29,17 +29,33 @@ export function Details(props) {
     const address = props.clinic.address1 + (props.clinic.adress2 ? " " + props.clinic.adress2 : "") + ", "
     const fullAddress = address + props.clinic.city + ', ' + props.clinic.state + ' '+ props.clinic.zip
 
-    const gMapLink = 'http://maps.google.com/?q=' + fullAddress
+    const gMapLink = 'https://www.google.com/maps/dir//' + props.clinic.clinic_name + fullAddress
 
     const phoneNum = props.clinic.phone
     let phoneNumDisplay = phoneNum ? "(" + phoneNum.substring(0, 3) + ")" + " " + phoneNum.substring(3, 6) + "-" + phoneNum.substring(6) : "📞 Unknown"
 
     const phoneNumLink = "tel:+" + phoneNum
+
+    const openDirections = () => {
+        window.open(gMapLink, "_blank")
+    }
+
+    const callPhoneNum = () => {
+        window.open(phoneNumLink)
+    }
+
     return (<div className="text-lg space-y-1 bg-white flex flex-col py-6">
         <div className="pb-8"> 
             <div className="text-2xl font-bold pb-4">{props.clinic.clinic_name}</div>
-            <div className="capitalize"><a href={gMapLink} target="_blank">🗺️</a> {fullAddress}</div>
-            <div><a href={phoneNumLink} >📞</a>  {phoneNumDisplay}</div>
+
+            <div className="capitalize">
+                <button className="btn btn-ghost w-full" role="link" onClick={() => openDirections()}>🗺️ {fullAddress}</button>
+            </div>
+
+            <div className="flex items-center py-3">
+                <button className="btn btn-circle btn-outline btn-primary" role="link" onClick={() => callPhoneNum()}>📞</button>
+                 <div className="pl-2">{phoneNumDisplay}</div>
+            </div>
             <div>{props.clinic.accepts_insurance ? takesInsurance : noInsurance}</div>
         </div>
         
