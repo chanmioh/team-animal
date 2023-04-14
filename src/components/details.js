@@ -3,15 +3,15 @@ export function Details(props) {
     const noInsurance = "❌ Doesn't Take Insurance"
 
     const categories = [
-        (props.clinic.Avian ? ["🦜 Bird"] : []),
-        (props.clinic["Beef Cattle"] ? ["🐄 Beef Cattle"] : []),
-        (props.clinic["Canine and Feline"] ? ["🐱🐶 Cat & Dog"] : []),
-        (props.clinic.Dairy ? ["🥛 Dairy Cattle"] : []),
-        (props.clinic.Equine ? ["🐴 Horse"] : []),
-        (props.clinic.Exotic ? ["🐯🐵 Exotic"] : []),
-        (props.clinic["Food Animal"] ? ["🍔 Food Animal"] : []),
-        (props.clinic["Reptile and Amphibian"] ? ["🐍🐟🐸 Reptiles & Amphibians"] : []),
-        (props.clinic.Swine ? ["🐷 Pig"] : [])].filter(word => word.length != 0)
+        (props.clinic.Avian ? ["Bird"] : []),
+        (props.clinic["Beef Cattle"] ? ["Beef Cattle"] : []),
+        (props.clinic["Canine and Feline"] ? ["Cat & Dog"] : []),
+        (props.clinic.Dairy ? ["Dairy Cattle"] : []),
+        (props.clinic.Equine ? ["Horse"] : []),
+        (props.clinic.Exotic ? ["Exotic"] : []),
+        (props.clinic["Food Animal"] ? ["Food Animal"] : []),
+        (props.clinic["Reptile and Amphibian"] ? ["Reptiles & Amphibians"] : []),
+        (props.clinic.Swine ? ["Pig"] : [])].filter(word => word.length != 0)
     
     const specialties = [
         (props.clinic.Cardiology? ["Cardiology"]: []),
@@ -48,21 +48,21 @@ export function Details(props) {
         {categories.length != 0 &&
             <div className="pt-3 border-t-2 mb-3">
                 <div className="font-medium"> Animal Categories:</div>
-                {categories.map(category => <div className="rounded-md drop-shadow-md">{category}</div>)}
+                {categories.map(category => <div>✓ {category}</div>)}
             </div>
          }
         
         {specialties.length != 0 &&
             <div className="pt-3 border-t-2">
                 <div className="font-medium">Specialties:</div>
-                {specialties.map(specialty => <div className="rounded-md drop-shadow-md" >{specialty}</div>)}
+                {specialties.map(specialty => <div>✓ {specialty}</div>)}
             </div>
          }
 
         {offerings.length != 0 &&
             <div className="pt-3 border-t-2">
                 <div className="font-medium">Additional Offerings: </div>
-                {offerings.map(offering => <div> ✓ {offering}</div>)}
+                {offerings.map(offering => <div>✓ {offering}</div>)}
             </div>
          }
         
