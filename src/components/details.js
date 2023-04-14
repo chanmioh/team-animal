@@ -28,7 +28,7 @@ export function Details(props) {
     const gMapLink = 'http://maps.google.com/?ll=' + props.clinic.latitude + ',' + props.clinic.longitude
 
 
-    return (<div className="text-lg space-y-1 bg-white flex flex flex-col px-10 border-y-2 py-6">
+    return (<div className="text-lg space-y-1 flex flex flex-col px-10 border-y-2 py-6">
         <div className="text-2xl font-medium">{props.clinic.clinic_name}</div>
         <div><a href={gMapLink} target="_blank">{address}</a></div>
         <div>{props.clinic.phone}</div>

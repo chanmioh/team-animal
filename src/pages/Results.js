@@ -6,7 +6,7 @@ export default function Results({clinics, onSeeMore}) {
   }
 
   return (
-    <div className="overflow-auto flex flex-col bg-white">
+    <div className="overflow-auto flex flex-col">
       {clinics.map((c, idx) => (
         <button onClick={() => onSeeMore(c)}>
           <Clinic key={idx} clinic={c} />
