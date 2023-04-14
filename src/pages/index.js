@@ -40,7 +40,7 @@ export default function Home() {
         flex flex-col`}
         >
           {/* Back Button */}
-          <button>
+          <button className="max-w-fit">
             <ArrowLeftIcon
               className={`h-8 self-start ${
                 currentPage == "search" && "invisible"
