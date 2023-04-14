@@ -66,13 +66,12 @@ export function Search(props) {
             type="num"
             placeholder="e.g. 12 Chewy Street"
             className={`input input-bordered 
-                    ${addressValidation == "incomplete" && "input-warning"} 
                     ${addressValidation == "malformed" && "input-error"} 
                     w-full`}
             onChange={(e) => {
               const newAddress = e.target.value;
               setAddress(newAddress);
-              if (!newAddress.match(`^[0-9]*\w[a-zA-Z]`)) {
+              if (newAddress.length > 0 && !newAddress.match(`\\d+ [a-zA-Z0-9\s]`)) {
                 setAddressValidation("malformed");
               } else {
                 setAddressValidation();
