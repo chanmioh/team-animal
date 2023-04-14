@@ -119,8 +119,8 @@ export default function Home() {
         </div>
       </div>
       {/* Credits */}
-      <span className="fixed bottom-4 w-screen text-center text-xs mt-6">
-        Made for Chewy Diversity Hackathon 2023 by team "PawCare".
+      <span className="fixed bottom-4 w-screen text-center text-xs text-white mt-6">
+        <p>Made for Chewy Diversity Hackathon 2023 by team "PawCare".</p>
       </span>
     </div>
   );
