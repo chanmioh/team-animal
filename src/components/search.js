@@ -130,7 +130,7 @@ export function Search(props) {
           </span>
           <input
             type="checkbox"
-            className="toggle-primary"
+            className="toggle toggle-primary"
             checked={whetherTelevet}
             onClick={() => setWhetherTelevet(!whetherTelevet)}
           />
@@ -141,7 +141,7 @@ export function Search(props) {
           <span className="label-text"> Emergency Services</span>
           <input
             type="checkbox"
-            className="toggle-primary"
+            className="toggle toggle-primary"
             checked={whetherEmergency}
             onClick={() => setWhetherEmergency(!whetherEmergency)}
           />
