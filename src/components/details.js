@@ -35,7 +35,7 @@ export function Details(props) {
     let phoneNumDisplay = phoneNum ? "(" + phoneNum.substring(0, 3) + ")" + " " + phoneNum.substring(3, 6) + "-" + phoneNum.substring(6) : "📞 Unknown"
 
     const phoneNumLink = "tel:+" + phoneNum
-    return (<div className="text-lg space-y-1 bg-white flex flex flex-col px-10 border-y-2 py-6">
+    return (<div className="text-lg space-y-1 bg-white flex flex flex-col  border-y-2 py-6">
         <div className="mb-3"> 
             <div className="text-2xl font-medium">{props.clinic.clinic_name}</div>
             <div><a href={gMapLink} target="_blank">🗺️</a> {fullAddress}</div>
