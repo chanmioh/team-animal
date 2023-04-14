@@ -17,15 +17,15 @@ export function Search(props) {
   const [zipValidation, setZipValidation] = useState();
 
   const categoriesOptions = [
-    { value: "Canine and Feline", label: "🐱🐶 Cat & Dog" },
-    { value: "Avian", label: "🦜 Bird" },
-    { value: "Reptile and Amphibian", label: "🐍🐟🐸 Reptiles & Amphibians" },
-    { value: "Exotic", label: "🐯🐵 Exotic" },
-    { value: "Equine", label: "🐴 Horse" },
-    { value: "Food Animal", label: "🍔 Food Animal" },
-    { value: "Beef Cattle", label: "🐄 Beef Cattle" },
-    { value: "Dairy", label: "🥛 Dairy Cattle" },
-    { value: "Swine", label: "🐷 Pig" },
+    { value: "Canine and Feline", label: "Cat & Dog 🐱🐶" },
+    { value: "Avian", label: "Bird 🦜" },
+    { value: "Reptile and Amphibian", label: "Reptiles & Amphibians 🐍🐟🐸 " },
+    { value: "Exotic", label: "Exotic 🐯🐵" },
+    { value: "Equine", label: "Horse 🐴" },
+    { value: "Food Animal", label: "Food Animal 🍔" },
+    { value: "Beef Cattle", label: "Beef Cattle 🐄" },
+    { value: "Dairy", label: "Dairy Cattle 🥛" },
+    { value: "Swine", label: "Pig 🐷" },
   ];
 
   const specialitiesOptions = [

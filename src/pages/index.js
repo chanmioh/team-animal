@@ -98,7 +98,7 @@ export default function Home() {
             }`}
             onClick={() => setCurrentPage("search")}
           >
-            Search
+            search
           </a>
           <button
             className={`tab tab-bordered ${
@@ -108,7 +108,7 @@ export default function Home() {
             }`}
             onClick={() => {if (clinics.length > 0) {setCurrentPage("result")}}}
           >
-            Results
+            results
           </button>
         </div>
 

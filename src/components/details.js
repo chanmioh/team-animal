@@ -1,7 +1,7 @@
 import { PhoneIcon } from "@heroicons/react/24/solid";
 import { MapIcon } from "@heroicons/react/24/solid";
 export function Details(props) {
-    const takesInsurance = '✔ Takes Insurance'
+    const takesInsurance = '✔️ Takes Insurance'
     const noInsurance = "❌ Doesn't Take Insurance"
 
     const categories = [
