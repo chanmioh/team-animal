@@ -29,3 +29,8 @@ body {
 .btn {
   text-transform: none;
 }
+
+.subtitle {
+  color: "#70757a";
+  font-size: "12px";
+}
