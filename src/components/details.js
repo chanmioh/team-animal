@@ -3,15 +3,15 @@ export function Details(props) {
     const noInsurance = "❌ Doesn't Take Insurance"
 
     const categories = [
-        (props.clinic.Avian ? ["🦜 Bird"] : []),
-        (props.clinic["Beef Cattle"] ? ["🐄 Beef Cattle"] : []),
-        (props.clinic["Canine and Feline"] ? ["🐱🐶 Cat & Dog"] : []),
-        (props.clinic.Dairy ? ["🥛 Dairy Cattle"] : []),
-        (props.clinic.Equine ? ["🐴 Horse"] : []),
-        (props.clinic.Exotic ? ["🐯🐵 Exotic"] : []),
-        (props.clinic["Food Animal"] ? ["🍔 Food Animal"] : []),
-        (props.clinic["Reptile and Amphibian"] ? ["🐍🐟🐸 Reptiles & Amphibians"] : []),
-        (props.clinic.Swine ? ["🐷 Pig"] : [])].filter(word => word.length != 0)
+        (props.clinic.Avian ? ["Bird"] : []),
+        (props.clinic["Beef Cattle"] ? ["Beef Cattle"] : []),
+        (props.clinic["Canine and Feline"] ? ["Cat & Dog"] : []),
+        (props.clinic.Dairy ? ["Dairy Cattle"] : []),
+        (props.clinic.Equine ? ["Horse"] : []),
+        (props.clinic.Exotic ? ["Exotic"] : []),
+        (props.clinic["Food Animal"] ? ["Food Animal"] : []),
+        (props.clinic["Reptile and Amphibian"] ? ["Reptiles & Amphibians"] : []),
+        (props.clinic.Swine ? ["Pig"] : [])].filter(word => word.length != 0)
     
     const specialties = [
         (props.clinic.Cardiology? ["Cardiology"]: []),
@@ -29,40 +29,54 @@ export function Details(props) {
     const address = props.clinic.address1 + (props.clinic.adress2 ? " " + props.clinic.adress2 : "") + ", "
     const fullAddress = address + props.clinic.city + ', ' + props.clinic.state + ' '+ props.clinic.zip
 
-    const gMapLink = 'http://maps.google.com/?q=' + fullAddress
+    const gMapLink = 'https://www.google.com/maps/dir//' + props.clinic.clinic_name + fullAddress
 
     const phoneNum = props.clinic.phone
     let phoneNumDisplay = phoneNum ? "(" + phoneNum.substring(0, 3) + ")" + " " + phoneNum.substring(3, 6) + "-" + phoneNum.substring(6) : "📞 Unknown"
 
     const phoneNumLink = "tel:+" + phoneNum
-    return (<div className="text-lg space-y-1 bg-white flex flex flex-col px-10 border-y-2 py-6">
-        <div className="mb-3"> 
-            <div className="text-2xl font-medium">{props.clinic.clinic_name}</div>
-            <div><a href={gMapLink} target="_blank">🗺️</a> {fullAddress}</div>
-            <div><a href={phoneNumLink} >📞</a>  {phoneNumDisplay}</div>
+
+    const openDirections = () => {
+        window.open(gMapLink, "_blank")
+    }
+
+    const callPhoneNum = () => {
+        window.open(phoneNumLink)
+    }
+
+    return (<div className="text-lg space-y-1 bg-white flex flex-col py-6">
+        <div className="pb-8"> 
+            <div className="text-2xl font-bold pb-4">{props.clinic.clinic_name}</div>
+
+            <div className="capitalize">
+                <button className="btn btn-ghost w-full" role="link" onClick={() => openDirections()}>🗺️ {fullAddress}</button>
+            </div>
+
+            <div className="flex items-center py-3">
+                <button className="btn btn-circle btn-outline btn-primary" role="link" onClick={() => callPhoneNum()}>📞</button>
+                 <div className="pl-2">{phoneNumDisplay}</div>
+            </div>
             <div>{props.clinic.accepts_insurance ? takesInsurance : noInsurance}</div>
         </div>
         
-
-        
         {categories.length != 0 &&
-            <div className="pt-3 border-t-2 mb-3">
-                <div className="font-medium"> Animal Categories:</div>
-                {categories.map(category => <div className="rounded-md drop-shadow-md">{category}</div>)}
+            <div className="py-8 border-t-2">
+                <div className="font-bold pb-4"> Animal Categories</div>
+                {categories.map(category => <div>✓ {category}</div>)}
             </div>
          }
         
         {specialties.length != 0 &&
-            <div className="pt-3 border-t-2">
-                <div className="font-medium">Specialties:</div>
-                {specialties.map(specialty => <div className="rounded-md drop-shadow-md" >{specialty}</div>)}
+            <div className="py-8 border-t-2 ">
+                <div className="font-bold pb-4">Specialties</div>
+                {specialties.map(specialty => <div>✓ {specialty}</div>)}
             </div>
          }
 
         {offerings.length != 0 &&
-            <div className="pt-3 border-t-2">
-                <div className="font-medium">Additional Offerings: </div>
-                {offerings.map(offering => <div> ✓ {offering}</div>)}
+            <div className="pt-8 border-t-2">
+                <div className="font-bold pb-4">Additional Offerings</div>
+                {offerings.map(offering => <div>✓ {offering}</div>)}
             </div>
          }
         

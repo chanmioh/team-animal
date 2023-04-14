@@ -25,3 +25,12 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.btn {
+  text-transform: none;
+}
+
+.subtitle {
+  color: "#70757a";
+  font-size: "12px";
+}
