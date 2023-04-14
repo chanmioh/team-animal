@@ -4,7 +4,7 @@ export default function Clinic({ clinic }) {
   const address = clinic.address1 + (clinic.adress2 ? " " + clinic.adress2 : "") + ", "
   
   const phoneNum = clinic.phone
-  let phoneNumDisplay = phoneNum ? "📞 (" + phoneNum.substring(0, 3) + ")" + " " + clinic.phone.substring(3, 6) + "-" + clinic.phone.substring(6) : "📞 Unknown"
+  let phoneNumDisplay = phoneNum ? "📞 (" + phoneNum.substring(0, 3) + ")" + " " + phoneNum.substring(3, 6) + "-" + phoneNum.substring(6) : "📞 Unknown"
   
   return (
     <div className="border-b-2 space-y-1 px-10 py-6">

@@ -1,5 +1,5 @@
 function createAdditionalOfferingsArr(practiceHub, teleVet, emergencyServices) {
-    const offerings = []
+    let offerings = []
     
     if (practiceHub) {
         offerings[offerings.length] = "Participates in PracticeHub"
@@ -13,7 +13,7 @@ function createAdditionalOfferingsArr(practiceHub, teleVet, emergencyServices) {
         offerings[offerings.length] = "Provides Emergency Services"
     }
 
-    return offerings;
+    return offerings
 }
 
 export function Details(props) {
@@ -26,13 +26,16 @@ export function Details(props) {
     const address = props.clinic.address1 + (props.clinic.adress2 ? " " + props.clinic.adress2 : "") + ", "
     const fullAddress = address + props.clinic.city + ', ' + props.clinic.state + ' '+ props.clinic.zip
 
-    const gMapLink = 'http://maps.google.com/?ll=' + props.clinic.latitude + ',' + props.clinic.longitude
+    const gMapLink = 'http://maps.google.com/?q=' + props.clinic.clinic_name
 
+    const phoneNum = props.clinic.phone
+    let phoneNumDisplay = phoneNum ? "(" + phoneNum.substring(0, 3) + ")" + " " + phoneNum.substring(3, 6) + "-" + phoneNum.substring(6) : "📞 Unknown"
 
+    const phoneNumLink = "tel:+" + phoneNum
     return (<div className="text-lg space-y-1 bg-white flex flex flex-col px-10 border-y-2 py-6">
         <div className="text-2xl font-medium">{props.clinic.clinic_name}</div>
-        <div><a href={gMapLink} target="_blank">{fullAddress}</a></div>
-        <div>{props.clinic.phone}</div>
+        <div><a href={gMapLink} target="_blank">🗺️</a> {fullAddress}</div>
+        <div><a href={phoneNumLink} >📞</a>  {phoneNumDisplay}</div>
         <div>{props.clinic.accepts_insurance ? takesInsurance : noInsurance}</div>
 
         
@@ -47,8 +50,8 @@ export function Details(props) {
                 {specialties.map(specialty => <div className="rounded-md drop-shadow-md" >{specialty}</div>)}
             </div>
          }
-        
-        {specialties.length != 0 &&
+
+        {offerings.length != 0 &&
             <div>Additional Offerings:
                 {offerings.map(offering => <div> ✓ {offering}</div>)}
             </div>
