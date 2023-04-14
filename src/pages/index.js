@@ -46,7 +46,7 @@ export default function Home() {
       />
       {/* Drawer */}
       <div
-        className={`absolute bg-primary-content top-0 left-0 h-screen w-80 p-6 max-w-[40vw] overflow-scroll 
+        className={`fixed bg-primary-content top-0 left-0 h-screen w-80 p-6 max-w-[40vw] overflow-x-visible overflow-y-clip
       flex flex-col drop-shadow-2xl`}
       >
         {/* Back Button */}
