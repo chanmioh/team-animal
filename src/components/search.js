@@ -57,43 +57,6 @@ export function Search(props) {
           />
         </label>
 
-        {/* Address input */}
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Street Address</span>
-          </label>
-          <input
-            type="num"
-            placeholder="e.g. 12 Chewy Street"
-            className={`input input-bordered 
-                    ${addressValidation == "malformed" && "input-error"} 
-                    w-full`}
-            onChange={(e) => {
-              const newAddress = e.target.value;
-              setAddress(newAddress);
-              if (newAddress.length > 0 && !newAddress.match(`\\d+ [a-zA-Z0-9\s]`)) {
-                setAddressValidation("malformed");
-              } else {
-                setAddressValidation();
-              }
-            }}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                zipValidation
-                  ? null
-                  : props.onSearch({
-                      categories,
-                      specialties,
-                      zipCode,
-                      whetherInsurance,
-                      whetherPracticeHub,
-                      whetherTelevet,
-                    });
-              }
-            }}
-          />
-        </div>
-
         {/* Zip input */}
         <div className="form-control">
           <label className="label">
@@ -115,6 +78,44 @@ export function Search(props) {
                 setZipValidation("incomplete");
               } else {
                 setZipValidation();
+              }
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                zipValidation
+                  ? null
+                  : props.onSearch({
+                      categories,
+                      specialties,
+                      zipCode,
+                      whetherInsurance,
+                      whetherPracticeHub,
+                      whetherTelevet,
+                    });
+              }
+            }}
+          />
+        </div>
+
+        {/* Address input */}
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Street Address</span>
+          </label>
+          <input
+            disabled={zipValidation != null || zipCode.length == 0}
+            type="text"
+            placeholder="e.g. 12 Chewy Street"
+            className={`input input-bordered 
+                    ${addressValidation == "malformed" && "input-error"} 
+                    w-full`}
+            onChange={(e) => {
+              const newAddress = e.target.value;
+              setAddress(newAddress);
+              if (newAddress.length > 0 && !newAddress.match(`\\d+ [a-zA-Z0-9\s]`)) {
+                setAddressValidation("malformed");
+              } else {
+                setAddressValidation();
               }
             }}
             onKeyDown={(e) => {
