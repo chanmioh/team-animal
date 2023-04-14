@@ -3,15 +3,15 @@ export function Details(props) {
     const noInsurance = "❌ Doesn't Take Insurance"
 
     const categories = [
-        (props.clinic.Avian ? ["🦜 Bird"] : []),
-        (props.clinic["Beef Cattle"] ? ["🐄 Beef Cattle"] : []),
-        (props.clinic["Canine and Feline"] ? ["🐱🐶 Cat & Dog"] : []),
-        (props.clinic.Dairy ? ["🥛 Dairy Cattle"] : []),
-        (props.clinic.Equine ? ["🐴 Horse"] : []),
-        (props.clinic.Exotic ? ["🐯🐵 Exotic"] : []),
-        (props.clinic["Food Animal"] ? ["🍔 Food Animal"] : []),
-        (props.clinic["Reptile and Amphibian"] ? ["🐍🐟🐸 Reptiles & Amphibians"] : []),
-        (props.clinic.Swine ? ["🐷 Pig"] : [])].filter(word => word.length != 0)
+        (props.clinic.Avian ? ["Bird"] : []),
+        (props.clinic["Beef Cattle"] ? ["Beef Cattle"] : []),
+        (props.clinic["Canine and Feline"] ? ["Cat & Dog"] : []),
+        (props.clinic.Dairy ? ["Dairy Cattle"] : []),
+        (props.clinic.Equine ? ["Horse"] : []),
+        (props.clinic.Exotic ? ["Exotic"] : []),
+        (props.clinic["Food Animal"] ? ["Food Animal"] : []),
+        (props.clinic["Reptile and Amphibian"] ? ["Reptiles & Amphibians"] : []),
+        (props.clinic.Swine ? ["Pig"] : [])].filter(word => word.length != 0)
     
     const specialties = [
         (props.clinic.Cardiology? ["Cardiology"]: []),
@@ -35,7 +35,7 @@ export function Details(props) {
     let phoneNumDisplay = phoneNum ? "(" + phoneNum.substring(0, 3) + ")" + " " + phoneNum.substring(3, 6) + "-" + phoneNum.substring(6) : "📞 Unknown"
 
     const phoneNumLink = "tel:+" + phoneNum
-    return (<div className="text-lg space-y-1 bg-white flex flex flex-col px-10 border-y-2 py-6">
+    return (<div className="text-lg space-y-1 bg-white flex flex flex-col  border-y-2 py-6">
         <div className="mb-3"> 
             <div className="text-2xl font-medium">{props.clinic.clinic_name}</div>
             <div><a href={gMapLink} target="_blank">🗺️</a> {fullAddress}</div>
@@ -48,21 +48,21 @@ export function Details(props) {
         {categories.length != 0 &&
             <div className="pt-3 border-t-2 mb-3">
                 <div className="font-medium"> Animal Categories:</div>
-                {categories.map(category => <div className="rounded-md drop-shadow-md">{category}</div>)}
+                {categories.map(category => <div>✓ {category}</div>)}
             </div>
          }
         
         {specialties.length != 0 &&
             <div className="pt-3 border-t-2">
                 <div className="font-medium">Specialties:</div>
-                {specialties.map(specialty => <div className="rounded-md drop-shadow-md" >{specialty}</div>)}
+                {specialties.map(specialty => <div>✓ {specialty}</div>)}
             </div>
          }
 
         {offerings.length != 0 &&
             <div className="pt-3 border-t-2">
                 <div className="font-medium">Additional Offerings: </div>
-                {offerings.map(offering => <div> ✓ {offering}</div>)}
+                {offerings.map(offering => <div>✓ {offering}</div>)}
             </div>
          }
         
