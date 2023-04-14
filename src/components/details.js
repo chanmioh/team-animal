@@ -1,12 +1,30 @@
 export function Details(props) {
     const takesInsurance = '✔ Takes Insurance'
     const noInsurance = "❌ Doesn't Take Insurance"
-    const categories = props.clinic.categories || []
-    const specialties = props.clinic.specialties || []
+
+    const categories = [
+        (props.clinic.Avian ? ["🦜 Bird"] : []),
+        (props.clinic["Beef Cattle"] ? ["🐄 Beef Cattle"] : []),
+        (props.clinic["Canine and Feline"] ? ["🐱🐶 Cat & Dog"] : []),
+        (props.clinic.Dairy ? ["🥛 Dairy Cattle"] : []),
+        (props.clinic.Equine ? ["🐴 Horse"] : []),
+        (props.clinic.Exotic ? ["🐯🐵 Exotic"] : []),
+        (props.clinic["Food Animal"] ? ["🍔 Food Animal"] : []),
+        (props.clinic["Reptile and Amphibian"] ? ["🐍🐟🐸 Reptiles & Amphibians"] : []),
+        (props.clinic.Swine ? ["🐷 Pig"] : [])].filter(word => word.length != 0)
+    
+    const specialties = [
+        (props.clinic.Cardiology? ["Cardiology"]: []),
+        (props.clinic.Dermatology? ["Dermatology"]: []),
+        (props.clinic.Neurology? ["Neurology"]: []),
+        (props.clinic.Nutrition? ["Nutrition"]: []),
+        (props.clinic.Oncology? ["Oncology"]: []),
+        (props.clinic.Radiology? ["Radiology"]: [])].filter(word => word.length != 0)
+
     const offerings = [
         (props.clinic.practiceHub ? ["Participates in PracticeHub"] : []),
         (props.clinic.televet_services ? ["Provides TeleVet Services"] : []), 
-        (props.clinic.emergency_services? ["Provides Emergency Services"] : [])].filter(word => word.length != 0);
+        (props.clinic.emergency_services? ["Provides Emergency Services"] : [])].filter(word => word.length != 0)
 
     const address = props.clinic.address1 + (props.clinic.adress2 ? " " + props.clinic.adress2 : "") + ", "
     const fullAddress = address + props.clinic.city + ', ' + props.clinic.state + ' '+ props.clinic.zip
@@ -28,14 +46,14 @@ export function Details(props) {
 
         
         {categories.length != 0 &&
-            <div>
-                <div className="font-medium"> Categories:</div>
+            <div className="pt-3 border-t-2 mb-3">
+                <div className="font-medium"> Animal Categories:</div>
                 {categories.map(category => <div className="rounded-md drop-shadow-md">{category}</div>)}
             </div>
          }
         
         {specialties.length != 0 &&
-            <div>
+            <div className="pt-3 border-t-2">
                 <div className="font-medium">Specialties:</div>
                 {specialties.map(specialty => <div className="rounded-md drop-shadow-md" >{specialty}</div>)}
             </div>
