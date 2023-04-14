@@ -53,7 +53,7 @@ export function Details(props) {
 
             <div className="flex py-4 border-y-2 justify-center space-x-4">
                 
-                <button className="btn btn-circle btn-outline btn-primary" role="link" onClick={() => callPhoneNum()}><PhoneIcon className="h-6"/></button>
+                {props.clinic.phone && <button className="btn btn-circle btn-outline btn-primary" role="link" onClick={() => callPhoneNum()}><PhoneIcon className="h-6"/></button>}
                 {props.clinic.address1 && <button className="btn btn-circle btn-outline btn-primary" role="link" onClick={() => openDirections()}><MapIcon className="h-6"/></button>}
             </div>
             
