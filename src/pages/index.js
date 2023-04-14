@@ -61,9 +61,10 @@ export default function Home() {
         setCurrentClinic={setCurrentClinic}
         setCurrentPage={setCurrentPage}
       />
+
       {/* Drawer */}
       <div
-        className={`fixed bg-primary-content top-0 left-0 h-screen w-80 p-6 max-w-[40vw] overflow-x-visible
+        className={`fixed bg-primary-content top-0 left-0 h-screen w-80 p-6 min-w-lg max-w-[40vw] overflow-x-visible
       flex flex-col drop-shadow-2xl`}
       >
         {/* Back Button */}
@@ -78,6 +79,7 @@ export default function Home() {
           />
         </button>
 
+        {/* Chewy Logo */}
         <div className="min-w-fit">
           <svg
             className="fill-primary"

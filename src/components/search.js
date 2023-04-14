@@ -7,6 +7,7 @@ export function Search(props) {
   // Field values
   let categories = [];
   let specialties = [];
+  const [address, setAddress] = useState("");
   const [zipCode, setZipCode] = useState("");
   const [whetherInsurance, setWhetherInsurance] = useState(false);
   const [whetherPracticeHub, setWhetherPracticeHub] = useState(false);
@@ -15,6 +16,7 @@ export function Search(props) {
 
   // Field validation
   const [zipValidation, setZipValidation] = useState();
+  const [addressValidation, setAddressValidation] = useState();
 
   const categoriesOptions = [
     { value: "Canine and Feline", label: "Cat & Dog 🐱🐶" },
@@ -54,6 +56,43 @@ export function Search(props) {
             }
           />
         </label>
+
+        {/* Address input */}
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Street Address</span>
+          </label>
+          <input
+            type="num"
+            placeholder="e.g. 12 Chewy Street"
+            className={`input input-bordered 
+                    ${addressValidation == "malformed" && "input-error"} 
+                    w-full`}
+            onChange={(e) => {
+              const newAddress = e.target.value;
+              setAddress(newAddress);
+              if (newAddress.length > 0 && !newAddress.match(`\\d+ [a-zA-Z0-9\s]`)) {
+                setAddressValidation("malformed");
+              } else {
+                setAddressValidation();
+              }
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                zipValidation
+                  ? null
+                  : props.onSearch({
+                      categories,
+                      specialties,
+                      zipCode,
+                      whetherInsurance,
+                      whetherPracticeHub,
+                      whetherTelevet,
+                    });
+              }
+            }}
+          />
+        </div>
 
         {/* Zip input */}
         <div className="form-control">
