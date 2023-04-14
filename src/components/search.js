@@ -6,6 +6,7 @@ import { InformationCircleIcon } from "@heroicons/react/24/outline";
 export function Search(props) {
   // Field values
   let categories = [];
+  let specialties = [];
   const [zipCode, setZipCode] = useState("");
   const [whetherInsurance, setWhetherInsurance] = useState(false);
   const [whetherPracticeHub, setWhetherPracticeHub] = useState(false);
@@ -24,7 +25,7 @@ export function Search(props) {
     { value: "Food Animal", label: "🍔 Food Animal" },
     { value: "Beef Cattle", label: "🐄 Beef Cattle" },
     { value: "Dairy", label: "🥛 Dairy Cattle" },
-    { value: "Swine", label: "🐷 Pig" }
+    { value: "Swine", label: "🐷 Pig" },
   ];
 
   const specialitiesOptions = [
@@ -150,16 +151,25 @@ export function Search(props) {
         {/* Specialization selector */}
         <label>
           <span className="label-text">Specialization</span>
-          <Select isMulti options={specialitiesOptions} />
+          <Select
+            isMulti
+            options={specialitiesOptions}
+            onChange={(newValue) =>
+              (specialties = newValue.map((value) => value.value))
+            }
+          />
         </label>
       </div>
 
       <button
-        className={`btn ${zipValidation ? "btn-disabled" : "btn-primary"} w-fit self-end`}
+        className={`btn ${
+          zipValidation ? "btn-disabled" : "btn-primary"
+        } w-fit self-end`}
         onClick={() => {
           props.onSearch({
-            categories,
             zipCode,
+            categories,
+            specialties,
             whetherInsurance,
             whetherPracticeHub,
             whetherTelevet,

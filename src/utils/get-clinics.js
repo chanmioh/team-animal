@@ -19,11 +19,16 @@ export function getClinics(searchParams) {
     );
   });
 
+  const categoriesAndSpecialties = [
+    ...searchParams.categories,
+    ...searchParams.specialties,
+  ];
+
   // For each category, find the matching clinics.
-  for (let i = 0; i < searchParams.categories.length; i++) {
-    result = result.filter(
-      (clinic) => clinic[searchParams.categories[i]] === 1
-    );
+  for (let i = 0; i < categoriesAndSpecialties.length; i++) {
+    result = result.filter((clinic) => {
+      return clinic[categoriesAndSpecialties[i]] === 1;
+    });
   }
   console.log(result);
 
