@@ -39,7 +39,7 @@ export function Search(props) {
   ];
 
   return (
-    <div className="flex flex-col space-y-16">
+    <div className="flex flex-col space-y-8">
       <div className="flex flex-col space-y-4">
         {/* Animal selector */}
         <label>
