@@ -33,26 +33,32 @@ export function Details(props) {
 
     const phoneNumLink = "tel:+" + phoneNum
     return (<div className="text-lg space-y-1 bg-white flex flex flex-col px-10 border-y-2 py-6">
-        <div className="text-2xl font-medium">{props.clinic.clinic_name}</div>
-        <div><a href={gMapLink} target="_blank">🗺️</a> {fullAddress}</div>
-        <div><a href={phoneNumLink} >📞</a>  {phoneNumDisplay}</div>
-        <div>{props.clinic.accepts_insurance ? takesInsurance : noInsurance}</div>
+        <div className="mb-3"> 
+            <div className="text-2xl font-medium">{props.clinic.clinic_name}</div>
+            <div><a href={gMapLink} target="_blank">🗺️</a> {fullAddress}</div>
+            <div><a href={phoneNumLink} >📞</a>  {phoneNumDisplay}</div>
+            <div>{props.clinic.accepts_insurance ? takesInsurance : noInsurance}</div>
+        </div>
+        
 
         
         {categories.length != 0 &&
-            <div>Categories:
+            <div>
+                <div className="font-medium"> Categories:</div>
                 {categories.map(category => <div className="rounded-md drop-shadow-md">{category}</div>)}
             </div>
          }
         
         {specialties.length != 0 &&
-            <div>Specialties:
+            <div>
+                <div className="font-medium">Specialties:</div>
                 {specialties.map(specialty => <div className="rounded-md drop-shadow-md" >{specialty}</div>)}
             </div>
          }
 
         {offerings.length != 0 &&
-            <div>Additional Offerings:
+            <div className="pt-3 border-t-2">
+                <div className="font-medium">Additional Offerings: </div>
                 {offerings.map(offering => <div> ✓ {offering}</div>)}
             </div>
          }
