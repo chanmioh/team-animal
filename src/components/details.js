@@ -38,6 +38,8 @@ export function Details(props) {
 
     const phoneNumLink = "tel:+" + phoneNum
 
+    const haveTimeData = props.clinic.walkTime ? true : false;
+
     const openDirections = () => {
         window.open(gMapLink, "_blank")
     }
@@ -64,6 +66,12 @@ export function Details(props) {
             </div>
         </div>
         
+        {haveTimeData && <div className="flex flex-col py-8 border-t-2">
+            <div>🚶 {props.clinic.walkTime}min</div> 
+            <div>🚉 {props.clinic.transitTime}min</div>
+            <div>🚗 {props.clinic.drivingTime}min</div>
+            </div>}
+
         {categories.length != 0 &&
             <div className="py-8 border-t-2">
                 <div className="font-bold pb-4"> Animal Categories</div>

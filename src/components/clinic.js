@@ -21,11 +21,11 @@ export default function Clinic({ clinic }) {
             <div className="text-green-600">{takesInsurance}</div> : <div className='text-rose-600'> {noInsurance} </div>}
         
 
-        <div className='flex space-x-1'>
-            <div>🚶 XXmin</div> 
-            <div>🚉 XXmin</div>
-            <div>🚗 XXmin</div>
-        </div>
+        {clinic.walkTime && <div className='flex space-x-1'>
+            <div>🚶 {clinic.walkTime}min</div> 
+            <div>🚉 {clinic.transitTime}min</div>
+            <div>🚗 {clinic.drivingTime}min</div>
+        </div>}
     </div>
       
     </div>
