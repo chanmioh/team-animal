@@ -103,6 +103,8 @@ export default function Home() {
           <button
             className={`tab tab-bordered ${
               clinics.length <= 0 && "tab-disabled"
+            } ${
+              currentPage === "result" && "tab-active"
             }`}
             onClick={() => {if (clinics.length > 0) {setCurrentPage("result")}}}
           >
