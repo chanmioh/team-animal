@@ -1,27 +1,12 @@
-function createAdditionalOfferingsArr(practiceHub, teleVet, emergencyServices) {
-    let offerings = []
-    
-    if (practiceHub) {
-        offerings[offerings.length] = "Participates in PracticeHub"
-    }
-
-    if (teleVet) {
-        offerings[offerings.length] = "Provides TeleVet Services"
-    }
-
-    if (emergencyServices) {
-        offerings[offerings.length] = "Provides Emergency Services"
-    }
-
-    return offerings
-}
-
 export function Details(props) {
     const takesInsurance = '✔ Takes Insurance'
     const noInsurance = "❌ Doesn't Take Insurance"
     const categories = props.clinic.categories || []
     const specialties = props.clinic.specialties || []
-    const offerings = createAdditionalOfferingsArr(props.clinic.practiceHub, props.clinic.televet_services, props.clinic.emergency_services);
+    const offerings = [
+        (props.clinic.practiceHub ? ["Participates in PracticeHub"] : []),
+        (props.clinic.televet_services ? ["Provides TeleVet Services"] : []), 
+        (props.clinic.emergency_services? ["Provides Emergency Services"] : [])].filter(word => word.length != 0);
 
     const address = props.clinic.address1 + (props.clinic.adress2 ? " " + props.clinic.adress2 : "") + ", "
     const fullAddress = address + props.clinic.city + ', ' + props.clinic.state + ' '+ props.clinic.zip
