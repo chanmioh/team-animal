@@ -24,6 +24,7 @@ export function Search(props) {
     { value: "Food Animal", label: "🍔 Food Animal" },
     { value: "Beef Cattle", label: "🐄 Beef Cattle" },
     { value: "Dairy", label: "🥛 Dairy Cattle" },
+    { value: "Swine", label: "🐷 Pig" }
   ];
 
   const specialitiesOptions = [
