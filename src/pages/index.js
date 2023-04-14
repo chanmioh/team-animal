@@ -43,7 +43,7 @@ export default function Home() {
         <div className="max-w-xl max-w-fit alert alert-info shadow-lg">
           <div>
             <span className="text-xl px-2">😿</span>
-            I'm sorry, no clinics matched your criteria. Please try again!
+            I'm sorry, no clinics matched your criteria.
             <button className="button button"></button>
           </div>
           <div className="flex-none">
